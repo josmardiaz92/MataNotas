@@ -17,14 +17,17 @@ const textoEditar=document.getElementById('textoEditar');
 const idEditar=document.getElementById('idEditar');
 const btnBuscar=document.getElementById('btnBuscar');
 const inputBuscar=document.getElementById('buscar');
-const contenedorAnuncios=document.getElementById('contenedorAnuncio')
+const contenedorAnuncios=document.getElementById('contenedorAnuncio');
+const btnTomarFoto = document.getElementById('tomarFoto');
+var imagen='';
 
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
     contarCartas();
-    iniciarBd()
+    iniciarBd();
     escucharBtn();
+    buscarFoto();
 }
 
 btnBuscar.addEventListener('click',buscarNota);
@@ -383,6 +386,72 @@ function contarCartas(){
     })
 }
 
+
+btnTomarFoto.addEventListener('click',()=>{
+    // Configura las opciones de la cámara
+    var options = {
+        quality: 50, // Calidad de la imagen (50 es media calidad)
+        destinationType: Camera.DestinationType.FILE_URI, // Tipo de destino de la imagen
+        sourceType: Camera.PictureSourceType.CAMERA, // Origen de la imagen (cámara o galería)
+        saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
+        encodingType: Camera.EncodingType.JPEG // Tipo de codificación de la imagen
+    };
+
+    // Llama a la cámara y devuelve la imagen
+    navigator.camera.getPicture(onSuccess, onFail, options);
+});
+
+// Función ejecutada cuando se toma una foto exitosamente
+function onSuccess(imageData) {
+    const win = function (fileEntry) {
+        im = fileEntry.toURL();
+
+        ponerFoto();
+    };
+
+    const fail = function (error) {
+        console.error("Error al guardar el archivo: ", error);
+    };
+
+    // Convierte la URL de la imagen a un objeto FileEntry
+    window.resolveLocalFileSystemURL(imageData, win, fail);
+}
+
+// Función ejecutada cuando falla la captura de la imagen
+function onFail(message) {
+    alert('Error al tomar la foto: ' + message);
+}
+
+function ponerFoto() {
+    imagen=im;
+    guardar();
+    mostrarFoto(imagen);
+}
+
+function guardar(){
+    let imagenGuardar=imagen;
+    localStorage.setItem('imagen', imagenGuardar);
+}
+
+function mostrarFoto(im){
+    const myStyle = document.createElement('style'); // Crea un elemento style
+    myStyle.textContent = `
+                            body{
+                                background-image: url(${imagen});
+                                background-repeat: no-repeat;
+                                background-size: cover; 
+                            }
+                        `;
+    document.head.appendChild(myStyle);
+}
+
+function buscarFoto(){
+    let imagenBuscada=localStorage.getItem('imagen');
+    if(imagenBuscada!=null && imagenBuscada!=undefined){
+        imagen=imagenBuscada;
+        mostrarFoto(imagen);
+    }
+}
 
 //agregar imagenes
 //backend

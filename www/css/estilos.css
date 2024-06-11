@@ -1,3 +1,7 @@
+body{
+  height: 100vh;
+}
+
 #textoAgregar{
     overflow-y: auto; /* Agregar scroll vertical */
     overflow-x: hidden;
@@ -67,3 +71,4 @@ h5{
 .tituloPrueba{
   border: none;
 }
+
