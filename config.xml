@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<platform name="android">
+        <icon src="www/img/icono2.png" density="ldpi"/>
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/img/icono2.png"/>
+        <preference name="AndroidWindowSplashScreenBackground" value="#E05079" />
+    </platform>
+    <name>Mata-Notas</name>
+    <description>App de notas</description>
+    <author email="josmardiaz92@gmail.com" href="">
+        Josmar Diaz
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>

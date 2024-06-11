@@ -1,0 +1,69 @@
+#textoAgregar{
+    overflow-y: auto; /* Agregar scroll vertical */
+    overflow-x: hidden;
+    max-height: 300px;
+    min-height: 100px;
+}
+
+.sin-scroll{
+  overflow-y: hidden; 
+  overflow-x: hidden;
+}
+
+.card{
+  height: 250px;
+  z-index: 0;
+}
+
+.expandida{
+  overflow-y: auto; /* Agregar scroll vertical */
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#cabeza{
+  z-index: 1;
+}
+
+#textoAgregar:hover,
+#textoAgregar:focus,
+#tituloAgregar:hover,
+#tituloAgregar:focus,
+#textoEditar:hover,
+#textoEditar:focus,
+#tituloEditar:hover,
+#tituloEditar:focus {
+  text-decoration: none; /* Quitar subrayado al pasar el cursor */
+  outline: none; /* Quitar borde de enfoque */
+  cursor: default; /* Cambiar cursor a mano al pasar el cursor (opcional) */
+}
+
+.editar,
+.atras{
+  border: none;
+  background-color: unset;
+}
+
+p,
+h5{
+  color: black;
+}
+
+#btn-agregar:active {
+  transform: scale(1.3); /* Aumentar el tamaño del botón en un 10% al hacer clic */
+  transition: transform 0.15s ease; /* Agregar una transición suave */
+  background-color: brown;
+}
+
+.contenedorBorrar{
+  height: 50px;
+}
+
+.tituloPrueba{
+  border: none;
+}
