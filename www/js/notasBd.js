@@ -22,6 +22,7 @@ const btnTomarFoto=document.getElementById('tomarFoto');
 const btnQuitarFondo=document.getElementById('quitarFondo');
 const body=document.querySelector('body');
 var imagen='';
+var ultimaBusqueda='';
 
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -32,10 +33,14 @@ function onDeviceReady(){
     buscarFoto();
 }
 
-btnBuscar.addEventListener('click',buscarNota);
+btnBuscar.addEventListener('click',()=>{
+    const busqueda=inputBuscar.value.toLowerCase();
+    buscarNota(busqueda);
+});
 inputBuscar.addEventListener('keypress',(evento)=>{
     if(evento.key==='Enter'){
-        buscarNota();
+        const busqueda=inputBuscar.value.toLowerCase();
+        buscarNota(busqueda);
     }
 })
 
@@ -282,8 +287,11 @@ function eliminarNota(evento){
     }
 }
 
-function buscarNota(){
-    var buscar=inputBuscar.value.toLowerCase(); 
+function buscarNota(busqueda){
+
+    var buscar=busqueda;
+    ultimaBusqueda=buscar;
+
     contenedorAnuncios.innerHTML=`<div class="col-12 d-flex justify-content-center mt-3" data-bs-theme="dark">
                                     <button type="button" class="me-1 rounded-circle border p-2 btn-close" id="btnCancelarBusqueda"></button>
                                 </div>`
@@ -315,6 +323,7 @@ function buscarNota(){
 
 function mostrarBusqueda(evento){
     var puntero = evento.target.result;
+    contenedorCartas.classList.add('row-cols-2');
     if(puntero){
         contenedorCartas.innerHTML+=`<div class="col colBorrar">
                                         <div class="card sin-scroll" style="background-color: ${puntero.value.Color}" id="${puntero.value.id}">
@@ -365,7 +374,16 @@ function escucharBtn(){
         const quitarBusqueda=document.getElementById('btnCancelarBusqueda',null);
 
         if(cartaSeleccionada){
-            Mostrar()
+            if(quitarBusqueda){
+                buscarNota(ultimaBusqueda)
+            }else{
+                Mostrar();
+            }
+            /* const cb=cartaSeleccionada.querySelector('.contenedorBorrar');
+            cb.classList.add('d-none');
+            cartaSeleccionada.classList.remove('expandida');
+            contenedorCartas.classList.add('row-cols-2','row-cols-md-4');
+            contarCartas() */
         }else if(quitarBusqueda){
             Mostrar();
         }else{
