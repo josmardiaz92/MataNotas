@@ -317,7 +317,7 @@ function mostrarBusqueda(evento){
     var puntero = evento.target.result;
     if(puntero){
         contenedorCartas.innerHTML+=`<div class="col colBorrar">
-                                        <div class="card" style="background-color: ${puntero.value.Color}" id="${puntero.value.id}">
+                                        <div class="card sin-scroll" style="background-color: ${puntero.value.Color}" id="${puntero.value.id}">
                                             <div class="opacity-50 d-none contenedorBorrar row me-1 mt-1 d-flex align-items-center">
                                                 <div class="col-2">
                                                     <button type="button" class="atras" ms-3" title="Atras">
@@ -365,12 +365,9 @@ function escucharBtn(){
         const quitarBusqueda=document.getElementById('btnCancelarBusqueda',null);
 
         if(cartaSeleccionada){
-            const cb=cartaSeleccionada.querySelector('.contenedorBorrar');
-            cb.classList.add('d-none');
-            cartaSeleccionada.classList.remove('expandida');
-            contenedorCartas.classList.add('row-cols-2','row-cols-md-4');
+            Mostrar()
         }else if(quitarBusqueda){
-        Mostrar();
+            Mostrar();
         }else{
             navigator.app.exitApp();
         }
