@@ -18,7 +18,9 @@ const idEditar=document.getElementById('idEditar');
 const btnBuscar=document.getElementById('btnBuscar');
 const inputBuscar=document.getElementById('buscar');
 const contenedorAnuncios=document.getElementById('contenedorAnuncio');
-const btnTomarFoto = document.getElementById('tomarFoto');
+const btnTomarFoto=document.getElementById('tomarFoto');
+const btnQuitarFondo=document.getElementById('quitarFondo');
+const body=document.querySelector('body');
 var imagen='';
 
 
@@ -47,6 +49,30 @@ modalEditar.addEventListener('hidden.bs.modal', ()=>{
     tituloEditar.value = '';
     textoEditar.value = '';
 });
+
+btnTomarFoto.addEventListener('click',()=>{
+    // Configura las opciones de la cámara
+    var options = {
+        quality: 50, // Calidad de la imagen (50 es media calidad)
+        destinationType: Camera.DestinationType.FILE_URI, // Tipo de destino de la imagen
+        sourceType: Camera.PictureSourceType.CAMERA, // Origen de la imagen (cámara o galería)
+        saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
+        encodingType: Camera.EncodingType.JPEG // Tipo de codificación de la imagen
+    };
+
+    // Llama a la cámara y devuelve la imagen
+    navigator.camera.getPicture(onSuccess, onFail, options);
+});
+
+btnQuitarFondo.addEventListener('click',()=>{
+    navigator.notification.confirm(
+        '¿Desea quitar el fondo?', // message
+        quitarFondo,            // callback to invoke with index of button pressed
+        'Alerta',           // title
+        ['Si','no']     // buttonLabels
+    );
+})
+
 function colorRamdom() {
     const matiz = Math.floor(Math.random() * 360);
     const saturacion = Math.random() * 0.8 + 0.2;
@@ -387,20 +413,6 @@ function contarCartas(){
 }
 
 
-btnTomarFoto.addEventListener('click',()=>{
-    // Configura las opciones de la cámara
-    var options = {
-        quality: 50, // Calidad de la imagen (50 es media calidad)
-        destinationType: Camera.DestinationType.FILE_URI, // Tipo de destino de la imagen
-        sourceType: Camera.PictureSourceType.CAMERA, // Origen de la imagen (cámara o galería)
-        saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
-        encodingType: Camera.EncodingType.JPEG // Tipo de codificación de la imagen
-    };
-
-    // Llama a la cámara y devuelve la imagen
-    navigator.camera.getPicture(onSuccess, onFail, options);
-});
-
 // Función ejecutada cuando se toma una foto exitosamente
 function onSuccess(imageData) {
     const win = function (fileEntry) {
@@ -433,16 +445,9 @@ function guardar(){
     localStorage.setItem('imagen', imagenGuardar);
 }
 
-function mostrarFoto(im){
-    const myStyle = document.createElement('style'); // Crea un elemento style
-    myStyle.textContent = `
-                            body{
-                                background-image: url(${imagen});
-                                background-repeat: no-repeat;
-                                background-size: cover; 
-                            }
-                        `;
-    document.head.appendChild(myStyle);
+function mostrarFoto(imagen){
+    body.style.backgroundImage=`url(${imagen})`
+    btnQuitarFondo.classList.remove('d-none');
 }
 
 function buscarFoto(){
@@ -450,6 +455,14 @@ function buscarFoto(){
     if(imagenBuscada!=null && imagenBuscada!=undefined){
         imagen=imagenBuscada;
         mostrarFoto(imagen);
+    }
+}
+
+function quitarFondo(e){
+    if(e===1){
+        body.style.backgroundImage='none';
+        btnQuitarFondo.classList.add('d-none');
+        localStorage.removeItem('imagen');
     }
 }
 
