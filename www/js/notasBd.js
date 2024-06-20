@@ -56,17 +56,25 @@ modalEditar.addEventListener('hidden.bs.modal', ()=>{
 });
 
 btnTomarFoto.addEventListener('click',()=>{
+    navigator.notification.confirm(
+        'Por favor elija de donde desea la imagen', // message
+        obtenerMedio,            // callback to invoke with index of button pressed
+        'Alerta',           // title
+        ['Camara','Album']     // buttonLabels
+    );
+
     // Configura las opciones de la cámara
-    var options = {
+    /* var options = {
         quality: 50, // Calidad de la imagen (50 es media calidad)
         destinationType: Camera.DestinationType.FILE_URI, // Tipo de destino de la imagen
         sourceType: Camera.PictureSourceType.CAMERA, // Origen de la imagen (cámara o galería)
-        saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
+        //saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
+        correctOrientation: true,
         encodingType: Camera.EncodingType.JPEG // Tipo de codificación de la imagen
-    };
+    }; */
 
     // Llama a la cámara y devuelve la imagen
-    navigator.camera.getPicture(onSuccess, onFail, options);
+    /* navigator.camera.getPicture(onSuccess, onFail, options); */
 });
 
 btnQuitarFondo.addEventListener('click',()=>{
@@ -77,6 +85,23 @@ btnQuitarFondo.addEventListener('click',()=>{
         ['Si','no']     // buttonLabels
     );
 })
+
+function obtenerMedio(e){
+    if(e==1){
+        var medio=Camera.PictureSourceType.CAMERA;
+    }else{
+        var medio=Camera.PictureSourceType.PHOTOLIBRARY;
+    }
+    var options = {
+        quality: 50, // Calidad de la imagen (50 es media calidad)
+        destinationType: Camera.DestinationType.FILE_URI, // Tipo de destino de la imagen
+        sourceType: medio, // Origen de la imagen (cámara o galería)
+        //saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
+        correctOrientation: true,
+        encodingType: Camera.EncodingType.JPEG // Tipo de codificación de la imagen
+    };
+    navigator.camera.getPicture(onSuccess, onFail, options);
+}
 
 function colorRamdom() {
     const matiz = Math.floor(Math.random() * 360);
