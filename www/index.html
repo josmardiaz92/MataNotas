@@ -15,7 +15,7 @@
 
 <body class="bg-dark text-light">
     <div class="container-fluid">
-        <div id="cabeza" class="mt-2 bg-dark sticky-top border-bottom border-secondary rounded">
+        <div id="cabeza" class="mt-2 sticky-top border-bottom border-secondary rounded">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-5 col-sm-10 m-2">
                         <div class="input-group">
@@ -35,18 +35,18 @@
         </div>
         <div id="pie" class="fixed-bottom pb-2 d-flex justify-content-end pe-3">
             <div class="btn-group dropstart">
-                <button type="button" class="btn btn-outline-warning" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-plus" style="color: #FFD43B;"></i>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-plus" style="color: #e63939;"></i>
                 </button>
-                <div class="dropdown-menu bg-dark">
-                    <div class="btn-group-vertical" role="group">
-                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+                <div class="dropdown-menu blur">
+                    <div class="btn-group-vertical d-flex justify-content-center mx-1" role="group">
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalAgregar">
                             Nota
                         </button>
-                        <button type="button" class="btn btn-outline-warning" id="tomarFoto">
+                        <button type="button" class="btn btn-outline-danger" id="tomarFoto">
                             Imagen de Fondo
                         </button>
-                        <button type="button" class="btn btn-outline-warning d-none" id="quitarFondo">
+                        <button type="button" class="btn btn-outline-danger d-none" id="quitarFondo">
                             Quitar Fondo
                         </button>
                     </div>
