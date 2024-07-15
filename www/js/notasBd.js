@@ -20,7 +20,7 @@ const inputBuscar=document.getElementById('buscar');
 const contenedorAnuncios=document.getElementById('contenedorAnuncio');
 const btnTomarFoto=document.getElementById('tomarFoto');
 const btnQuitarFondo=document.getElementById('quitarFondo');
-const body=document.querySelector('body');
+const imgFondo=document.querySelector('img');
 var imagen='';
 var ultimaBusqueda='';
 
@@ -486,7 +486,7 @@ function guardar(){
 }
 
 function mostrarFoto(imagen){
-    body.style.backgroundImage=`url(${imagen})`
+    imgFondo.src=`${imagen}`
     btnQuitarFondo.classList.remove('d-none');
 }
 
@@ -500,12 +500,10 @@ function buscarFoto(){
 
 function quitarFondo(e){
     if(e===1){
-        body.style.backgroundImage='none';
+        imgFondo.src='';
         btnQuitarFondo.classList.add('d-none');
         localStorage.removeItem('imagen');
     }
 }
 
-//agregar imagenes
-//backend
 
