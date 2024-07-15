@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="www3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/plugins/cordova-plugin-network-information/www/Connection.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/plugins/cordova-plugin-network-information/www/network.js.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

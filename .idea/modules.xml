@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/CordovaLib/CordovaLib.iml" filepath="$PROJECT_DIR$/platforms/android/CordovaLib/CordovaLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/src/app.iml" filepath="$PROJECT_DIR$/platforms/android/app/src/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/build.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/cordova-plugin-camera/cordova-plugin-camera.iml" filepath="$PROJECT_DIR$/plugins/cordova-plugin-camera/cordova-plugin-camera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/cordova-plugin-dialogs/cordova-plugin-dialogs.iml" filepath="$PROJECT_DIR$/plugins/cordova-plugin-dialogs/cordova-plugin-dialogs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/cordova-plugin-file/cordova-plugin-file.iml" filepath="$PROJECT_DIR$/plugins/cordova-plugin-file/cordova-plugin-file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/cordova-plugin-network-information/cordova-plugin-network-information.iml" filepath="$PROJECT_DIR$/plugins/cordova-plugin-network-information/cordova-plugin-network-information.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/intermediates/bundle_manifest/release/processApplicationManifestReleaseForBundle/processApplicationManifestReleaseForBundle.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/intermediates/bundle_manifest/release/processApplicationManifestReleaseForBundle/processApplicationManifestReleaseForBundle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/processDebugMainManifest.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/processDebugMainManifest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifests/debug/processDebugManifest/processDebugManifest.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifests/debug/processDebugManifest/processDebugManifest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/intermediates/packaged_manifests/debug/processDebugManifestForPackage/processDebugManifestForPackage.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/intermediates/packaged_manifests/debug/processDebugManifestForPackage/processDebugManifestForPackage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifest/release/processReleaseMainManifest/processReleaseMainManifest.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifest/release/processReleaseMainManifest/processReleaseMainManifest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifests/release/processReleaseManifest/processReleaseManifest.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/intermediates/merged_manifests/release/processReleaseManifest/processReleaseManifest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/app/build/intermediates/packaged_manifests/release/processReleaseManifestForPackage/processReleaseManifestForPackage.iml" filepath="$PROJECT_DIR$/platforms/android/app/build/intermediates/packaged_manifests/release/processReleaseManifestForPackage/processReleaseManifestForPackage.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="js2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.esm.js.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.esm.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.esm.min.js.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.js.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.bundle.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.min.js.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.bundle.js.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.esm.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js.map.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

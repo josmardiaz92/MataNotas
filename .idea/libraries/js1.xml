@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="js1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/conflict-detection.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/solid.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/v4-shims.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/brands.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/regular.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/all.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/v4-shims.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/fontawesome.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/solid.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/all.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/fontawesome.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/brands.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/regular.min.js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/js/conflict-detection.min.js.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

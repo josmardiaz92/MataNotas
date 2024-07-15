@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="metadata">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/shims.json.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/icon-families.json.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/icon-families.yml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/categories.yml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/sponsors.yml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/icons.yml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/shims.yml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/metadata/icons.json.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

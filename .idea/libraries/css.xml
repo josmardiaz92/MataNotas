@@ -1,0 +1,40 @@
+<component name="libraryTable">
+  <library name="css">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.rtl.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.min.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.rtl.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.rtl.min.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.rtl.min.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.rtl.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.rtl.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.rtl.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.rtl.min.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.min.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.rtl.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.rtl.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.rtl.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.rtl.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.rtl.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.rtl.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-utilities.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.min.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap.min.css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.rtl.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-reboot.rtl.min.css.map.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/bootstrap-5.3.2-dist/css/bootstrap-grid.min.css.map.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

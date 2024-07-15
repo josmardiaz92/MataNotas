@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="isChrome.js">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/plugins/cordova-plugin-file/www/browser/isChrome.js.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

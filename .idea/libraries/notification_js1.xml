@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="notification.js1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/plugins/cordova-plugin-dialogs/www/android/notification.js.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="webfonts">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.ttf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.ttf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.ttf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.ttf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/platforms/android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/www/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
