@@ -25,13 +25,13 @@ var imagen='';
 var ultimaBusqueda='';
 
 
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady(){
+/* document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady(){ */
     contarCartas();
     iniciarBd();
     escucharBtn();
     buscarFoto();
-}
+//}
 
 btnBuscar.addEventListener('click',()=>{
     const busqueda=inputBuscar.value.toLowerCase();

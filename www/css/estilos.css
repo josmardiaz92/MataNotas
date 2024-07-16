@@ -79,3 +79,22 @@ h5{
   background-color: rgba(240, 248, 255, 0.568);
   border: none;
 }
+
+#modalTutorial-content {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  top: 10%;
+}
+#logoModal {
+  height: 20vh;
+  position: absolute;
+  top: -5vh;
+  right: -10vh;
+  background-color: transparent;
+  border: none;
+}
+
+.filtro{
+  filter: blur(20px);
+}

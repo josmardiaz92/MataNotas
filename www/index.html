@@ -14,8 +14,8 @@
 </head>
 
 <body class="bg-dark text-light">
-    <img src="" alt="">
-    <div class="container-fluid">
+    <div class="container-fluid filtro">
+        <img src="" alt="">
         <div id="cabeza" class="mt-2 sticky-top border-bottom border-secondary rounded">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-5 col-sm-10 m-2">
@@ -51,8 +51,7 @@
                             Quitar Fondo
                         </button>
                     </div>
-                    
-                </d>
+                </div>
             </div>
         </div>
     </div>
@@ -109,6 +108,29 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modalTutorial" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-labelledby="modalTutorialLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg mt-5" role="document">
+                <div class="modal-content bg-dark" id="modalTutorial-content">
+                    <img src="img/icono.png" id="logoModal" alt="Logo" class="img-thumbnail">
+                    <div class="modal-body mt-2 me-5">
+                        <div id="contenido">
+                            <h3 id="tutorialTitulo"></h3>
+                            <p class="text-light" id="tutorialContenido"></p>
+                            <img src="" alt="" id="tutorialImagen">
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <div class="form-check me-auto">
+                            <input class="form-check-input" type="checkbox" id="btnConfirm">
+                            <label class="form-check-label" for="btnConfirm">No mostrar más</label>
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="btnAnterior">Atrás</button>
+                        <button type="button" class="btn btn-primary" id="btnSiguiente">Siguiente</button>
+                        <button type="button" class="btn btn-success" id="btnFin">Terminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     
@@ -116,7 +138,7 @@
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/efectos.js"></script>
     <script src="js/notasBd.js"></script>
-    <script src="js/toolstips.js"></script>
-    <script src="cordova.js"></script>
+    <script src="js/tutorial.js"></script>
+    <!-- <script src="cordova.js"></script> -->
 </body>
 </html>
