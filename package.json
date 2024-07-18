@@ -1,7 +1,7 @@
 {
   "name": "io.cordova.matanotas",
   "displayName": "MataNotas",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "App de Notas",
   "main": "index.js",
   "scripts": {

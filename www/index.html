@@ -21,7 +21,7 @@
                 <div class="col-lg-5 col-sm-10 m-2">
                         <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="btn-buscar" id="buscar">
-                                <button class="btn btn-light" type="button" id="btnBuscar"><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></button>                        
+                                <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#modalConfiguraciones"><i class="fa-solid fa-gear" style="color: #030303;"></i></button>                        
                         </div>
                 </div>
             </div>
@@ -36,22 +36,9 @@
         </div>
         <div id="pie" class="fixed-bottom pb-2 d-flex justify-content-end pe-3">
             <div class="btn-group dropstart">
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalAgregar">
                     <i class="fa-solid fa-plus" style="color: #e63939;"></i>
                 </button>
-                <div class="dropdown-menu blur">
-                    <div class="btn-group-vertical d-flex justify-content-center mx-1" role="group">
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalAgregar">
-                            Nota
-                        </button>
-                        <button type="button" class="btn btn-outline-danger" id="tomarFoto">
-                            Imagen de Fondo
-                        </button>
-                        <button type="button" class="btn btn-outline-danger d-none" id="quitarFondo">
-                            Quitar Fondo
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -109,11 +96,11 @@
             </div>
         </div>
         <div class="modal fade" id="modalTutorial" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-labelledby="modalTutorialLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg mt-5" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark" id="modalTutorial-content">
-                    <img src="img/icono.png" id="logoModal" alt="Logo" class="img-thumbnail">
+                    <img src="img/icono.png" alt="Logo" class="img-thumbnail logoModal">
                     <div class="modal-body mt-2 me-5">
-                        <div id="contenido">
+                        <div>
                             <h3 id="tutorialTitulo"></h3>
                             <p class="text-light" id="tutorialContenido"></p>
                             <img src="" alt="" id="tutorialImagen">
@@ -131,6 +118,69 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modalConfiguraciones" tabindex="-1" role="dialog" aria-labelledby="modalConfiguracionesLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark" id="modalConfiguraciones-content">
+                    <img src="img/icono.png" alt="Logo" class="img-thumbnail logoModal">
+                    <div class="modal-body mt-2">
+                        <div>
+                            <h3 class="text-center">Configuraciones</h3>
+                            <hr>
+                            <ul type="none" class="text-center">
+                                <li class="mt-2">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalTutorial">
+                                        Tutorial
+                                    </button>
+                                </li>
+                                <li class="mt-2">
+                                    <button type="button" id="tomarFoto">
+                                        Agregar Imagen de Fondo
+                                    </button>
+                                </li>
+                                <li class="mt-2">
+                                    <button type="button" class="d-none" id="quitarFondo">
+                                        Quitar Fondo
+                                    </button>
+                                </li>
+                                <li class="mt-2">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalContactos">
+                                        Contactanos
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <span>Creado por Josmar Diaz 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalContactos" tabindex="-1" role="dialog" aria-labelledby="modalContactosLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark" id="modalContactos-content">
+                    <img src="img/icono.png" alt="Logo" class="img-thumbnail logoModal">
+                    <div class="modal-body mt-2">
+                        <div>
+                            <h3 class="text-center">Contactanos</h3>
+                            <hr>
+                            <ul type="none" class="text-center">
+                                <li class="mt-2">
+                                    <i class="fa-brands fa-whatsapp me-2" style="color: #ffffff;"></i>
+                                    <a href="https://wa.me/584149723784?text=%C2%A1Hola!%20Estoy%20usando%20tu%20app%20y%20me%20gustar%C3%ADa%20sugerirte...">WhatsApp</a>
+                                </li>
+                                <li class="mt-2">
+                                    <i class="fa-solid fa-envelope me-2" style="color: #ffffff;"></i>
+                                    <p>josmardiaz92@gmail.com</p>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     
@@ -139,6 +189,6 @@
     <script src="js/efectos.js"></script>
     <script src="js/notasBd.js"></script>
     <script src="js/tutorial.js"></script>
-    <!-- <script src="cordova.js"></script> -->
+    <script src="cordova.js"></script>
 </body>
 </html>

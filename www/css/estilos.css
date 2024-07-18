@@ -82,19 +82,27 @@ h5{
 
 #modalTutorial-content {
   width: 100%;
-  margin: auto;
-  position: relative;
-  top: 10%;
 }
-#logoModal {
-  height: 20vh;
+
+.logoModal {
+  height: 15vh;
   position: absolute;
   top: -5vh;
-  right: -10vh;
+  right: -5vh;
   background-color: transparent;
   border: none;
 }
 
 .filtro{
   filter: blur(20px);
+}
+
+.modal-footer span{
+  font-size: xx-small;
+}
+
+li button,a,p{
+  font-size: medium;
+  font-weight: bold;
+  all: unset;
 }

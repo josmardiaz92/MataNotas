@@ -6,16 +6,17 @@ const modalAgregar=document.getElementById('modalAgregar');
 const formularioAgregar=modalAgregar.querySelector('form');
 const modalEditar=document.getElementById('modalEditar');
 const formularioEditar=modalEditar.querySelector('form');
+const modalConfiguraciones=document.getElementById('modalConfiguraciones');
 //instanciaremos los modales para poder usar despues la funcion de cerrar el modal
 const modalInstanceAgregar = new bootstrap.Modal(modalAgregar);
 const modalInstanceEditar = new bootstrap.Modal(modalEditar);
+const modalInstanceConfiguraciones = new bootstrap.Modal(modalConfiguraciones);
 //aca llamamos los input que contienen la informacion a agregar o editar
 const tituloAgregar=document.getElementById('tituloAgregar');
 const textoAgregar=document.getElementById('textoAgregar');
 const tituloEditar=document.getElementById('tituloEditar');
 const textoEditar=document.getElementById('textoEditar');
 const idEditar=document.getElementById('idEditar');
-const btnBuscar=document.getElementById('btnBuscar');
 const inputBuscar=document.getElementById('buscar');
 const contenedorAnuncios=document.getElementById('contenedorAnuncio');
 const btnTomarFoto=document.getElementById('tomarFoto');
@@ -25,18 +26,25 @@ var imagen='';
 var ultimaBusqueda='';
 
 
-/* document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady(){ */
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady(){
     contarCartas();
     iniciarBd();
     escucharBtn();
-    buscarFoto();
-//}
+    if(!document.querySelector('.container-fluid').classList.contains('filtro')){
+        buscarFoto();
+    }
+}
 
-btnBuscar.addEventListener('click',()=>{
-    const busqueda=inputBuscar.value.toLowerCase();
-    buscarNota(busqueda);
-});
+    /* contarCartas();
+    iniciarBd();
+    escucharBtn();
+    if(!document.querySelector('.container-fluid').classList.contains('filtro')){
+        console.log('dadadada')
+        buscarFoto();
+    } */
+
+
 inputBuscar.addEventListener('keypress',(evento)=>{
     if(evento.key==='Enter'){
         const busqueda=inputBuscar.value.toLowerCase();
@@ -478,6 +486,7 @@ function ponerFoto() {
     imagen=im;
     guardar();
     mostrarFoto(imagen);
+    modalInstanceConfiguraciones.hide();
 }
 
 function guardar(){
@@ -503,6 +512,7 @@ function quitarFondo(e){
         imgFondo.src='';
         btnQuitarFondo.classList.add('d-none');
         localStorage.removeItem('imagen');
+        modalInstanceConfiguraciones.hide();
     }
 }
 
