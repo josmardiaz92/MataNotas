@@ -1,6 +1,7 @@
 var bd;
 //Llamamos todo lo que se necesita del DOM
 const contenedorCartas=document.getElementById('contenedorCartas'); //contenedor donde se mostraran las notas
+const contenedorAnuncios=document.getElementById('contenedorAnuncio');
 //modales y formularios donde se agregara la informacion
 const modalAgregar=document.getElementById('modalAgregar');
 const formularioAgregar=modalAgregar.querySelector('form');
@@ -18,7 +19,7 @@ const tituloEditar=document.getElementById('tituloEditar');
 const textoEditar=document.getElementById('textoEditar');
 const idEditar=document.getElementById('idEditar');
 const inputBuscar=document.getElementById('buscar');
-const contenedorAnuncios=document.getElementById('contenedorAnuncio');
+//aca llamamos los botones que contienen la informacion a agregar o editar
 const btnTomarFoto=document.getElementById('tomarFoto');
 const btnQuitarFondo=document.getElementById('quitarFondo');
 const imgFondo=document.querySelector('img');
@@ -26,7 +27,7 @@ var imagen='';
 var ultimaBusqueda='';
 
 
-document.addEventListener("deviceready", onDeviceReady, false);
+/* document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
     contarCartas();
     iniciarBd();
@@ -34,15 +35,15 @@ function onDeviceReady(){
     if(!document.querySelector('.container-fluid').classList.contains('filtro')){
         buscarFoto();
     }
-}
+} */
 
-    /* contarCartas();
+    contarCartas();
     iniciarBd();
     escucharBtn();
     if(!document.querySelector('.container-fluid').classList.contains('filtro')){
         console.log('dadadada')
         buscarFoto();
-    } */
+    }
 
 
 inputBuscar.addEventListener('keypress',(evento)=>{
@@ -70,19 +71,6 @@ btnTomarFoto.addEventListener('click',()=>{
         'Alerta',           // title
         ['Camara','Album']     // buttonLabels
     );
-
-    // Configura las opciones de la cámara
-    /* var options = {
-        quality: 50, // Calidad de la imagen (50 es media calidad)
-        destinationType: Camera.DestinationType.FILE_URI, // Tipo de destino de la imagen
-        sourceType: Camera.PictureSourceType.CAMERA, // Origen de la imagen (cámara o galería)
-        //saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
-        correctOrientation: true,
-        encodingType: Camera.EncodingType.JPEG // Tipo de codificación de la imagen
-    }; */
-
-    // Llama a la cámara y devuelve la imagen
-    /* navigator.camera.getPicture(onSuccess, onFail, options); */
 });
 
 btnQuitarFondo.addEventListener('click',()=>{
@@ -310,13 +298,6 @@ function eliminarNota(evento){
             'Alerta',           // title
             ['Si','no']     // buttonLabels
         );
-        /* const carta=evento.target.closest('.card');
-        const cartaID=carta.id;
-        var transaccion=bd.transaction(["Notas"], "readwrite");
-        var almacen=transaccion.objectStore("Notas");
-        transaccion.addEventListener("complete", Mostrar);
-    
-        var solicitud=almacen.delete(cartaID); */
     }
 }
 
@@ -399,8 +380,6 @@ function mostrarBusqueda(evento){
     document.getElementById('btnCancelarBusqueda').addEventListener('click',Mostrar);
 }
 
-
-
 function escucharBtn(){
     document.addEventListener("backbutton", ()=>{
         const cartaSeleccionada=document.querySelector('.expandida',null);
@@ -412,11 +391,6 @@ function escucharBtn(){
             }else{
                 Mostrar();
             }
-            /* const cb=cartaSeleccionada.querySelector('.contenedorBorrar');
-            cb.classList.add('d-none');
-            cartaSeleccionada.classList.remove('expandida');
-            contenedorCartas.classList.add('row-cols-2','row-cols-md-4');
-            contarCartas() */
         }else if(quitarBusqueda){
             Mostrar();
         }else{
@@ -445,12 +419,6 @@ function contarCartas(){
             carta.classList.add('expandida');
             contenedorCartas.classList.remove('row-cols-2','row-cols-md-4');
         });
-        /* carta.addEventListener('mouseout',()=>{
-            //al salir de la nota, se vuelve a ocultar el contenedor de los botonos borrar y editar
-            contenedorBorrar.classList.add('d-none');
-            carta.classList.remove('expandida');
-            contenedorCartas.classList.add('row-cols-2','row-cols-md-4');
-        }); */
         btnAtras.addEventListener('click',()=>{
             //al salir de la nota, se vuelve a ocultar el contenedor de los botonos borrar y editar
             contenedorBorrar.classList.add('d-none');
@@ -479,7 +447,7 @@ function onSuccess(imageData) {
 
 // Función ejecutada cuando falla la captura de la imagen
 function onFail(message) {
-    alert('Error al tomar la foto: ' + message);
+    console.log('Error al tomar la foto: ' + message);
 }
 
 function ponerFoto() {
@@ -497,6 +465,7 @@ function guardar(){
 function mostrarFoto(imagen){
     imgFondo.src=`${imagen}`
     btnQuitarFondo.classList.remove('d-none');
+    btnTomarFoto.textContent='Cambiar Imagen de fondo';
 }
 
 function buscarFoto(){
@@ -510,10 +479,10 @@ function buscarFoto(){
 function quitarFondo(e){
     if(e===1){
         imgFondo.src='';
+        btnTomarFoto.textContent='Agregar Imagen de fondo';
         btnQuitarFondo.classList.add('d-none');
         localStorage.removeItem('imagen');
         modalInstanceConfiguraciones.hide();
     }
 }
-
 
