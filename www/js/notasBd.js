@@ -8,10 +8,12 @@ const formularioAgregar=modalAgregar.querySelector('form');
 const modalEditar=document.getElementById('modalEditar');
 const formularioEditar=modalEditar.querySelector('form');
 const modalConfiguraciones=document.getElementById('modalConfiguraciones');
+const modalContactos=document.getElementById('modalContactos');
 //instanciaremos los modales para poder usar despues la funcion de cerrar el modal
 const modalInstanceAgregar = new bootstrap.Modal(modalAgregar);
 const modalInstanceEditar = new bootstrap.Modal(modalEditar);
 const modalInstanceConfiguraciones = new bootstrap.Modal(modalConfiguraciones);
+const modalInstanceContactos= new bootstrap.Modal(modalContactos);
 //aca llamamos los input que contienen la informacion a agregar o editar
 const tituloAgregar=document.getElementById('tituloAgregar');
 const textoAgregar=document.getElementById('textoAgregar');
@@ -23,7 +25,9 @@ const btnTomarFoto=document.getElementById('tomarFoto');
 const btnQuitarFondo=document.getElementById('quitarFondo');
 const imgFondo=document.querySelector('img');
 var imagen='';
-var notas=[]
+var notas=[];
+var accion='';
+var ultimaBusqueda='';
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
@@ -40,17 +44,38 @@ function onDeviceReady(){
     escucharBtn();
     if(!document.querySelector('.container-fluid').classList.contains('filtro')){
         buscarFoto();
-    }
- */
+    } */
+
 //escuchamos al modal agregar, para que cuando se cierre, limpie los inputs
+modalAgregar.addEventListener('show.bs.modal',()=>{
+    accion='cerrarModalAgregar';
+});
 modalAgregar.addEventListener('hidden.bs.modal', ()=>{
     tituloAgregar.value = '';
     textoAgregar.value = '';
+    accion='';
 });
+
 //escuchamos al modal editar, para que cuando se cierre, limpie los inputs
+modalEditar.addEventListener('show.bs.modal',()=>{
+    accion='cerrarModalEditar';
+});
 modalEditar.addEventListener('hidden.bs.modal', ()=>{
     tituloEditar.value = '';
     textoEditar.value = '';
+    accion='';
+});
+
+modalConfiguraciones.addEventListener('show.bs.modal',()=>{
+    accion='cerrarModalConfiguraciones';
+});
+modalConfiguraciones.addEventListener('hidden.bs.modal',()=>{
+    if(accion!=='volverModal'){
+        accion='';
+    }
+});
+modalContactos.addEventListener('show.bs.modal',()=>{
+    accion='volverModal';
 });
 
 btnTomarFoto.addEventListener('click',()=>{
@@ -295,7 +320,50 @@ function escucharBtn(){
         const cartaSeleccionada=document.querySelector('.expandida',null);
         const quitarBusqueda=document.getElementById('btnCancelarBusqueda',null);
 
-        if(cartaSeleccionada){
+        if(accion!=='cerrarModalConfiguraciones' && accion!=='cerrarModalEditar'){
+            if(cartaSeleccionada){
+                if(quitarBusqueda){
+                    accion='volverBusqueda';
+                }else{
+                    accion='volver';
+                }
+            }else if(quitarBusqueda){
+                accion='volver';
+            }
+        }
+        
+        switch (accion) {
+            case 'volverBusqueda':
+                mostrarBusqueda(ultimaBusqueda);
+                accion='';
+                break;
+            case 'volver':
+                Mostrar();
+                accion='';
+                break;
+            case 'cerrarModalConfiguraciones':
+                modalInstanceConfiguraciones.hide();
+                accion='';
+                break;
+            case 'volverModal':
+                modalInstanceContactos.hide();
+                modalInstanceConfiguraciones.show();
+                accion='cerrarModalConfiguraciones';
+                break;
+            case 'cerrarModalAgregar':
+                modalInstanceAgregar.hide();
+                accion='';
+                break;
+            case 'cerrarModalEditar':
+                modalInstanceEditar.hide();
+                accion='';
+                break;
+            default:
+                navigator.app.exitApp();
+                break;
+        }
+
+        /* if(cartaSeleccionada){
             if(quitarBusqueda){
                 buscarNota(ultimaBusqueda)
             }else{
@@ -305,8 +373,7 @@ function escucharBtn(){
             Mostrar();
         }else{
             navigator.app.exitApp();
-        }
-        
+        } */
     });
     contenedorCartas.addEventListener('click',(evento)=>{
         if (evento.target.classList.contains('btnBorrar')) {
@@ -316,6 +383,9 @@ function escucharBtn(){
         }
     });
 }
+
+
+
 
 function contarCartas(){
     const cartas=contenedorCartas.querySelectorAll('.card');

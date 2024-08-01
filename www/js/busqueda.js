@@ -1,5 +1,3 @@
-var ultimaBusqueda='';
-
 const inputBuscar=document.getElementById('buscar');
 
 
