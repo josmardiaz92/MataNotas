@@ -18,16 +18,14 @@ const textoAgregar=document.getElementById('textoAgregar');
 const tituloEditar=document.getElementById('tituloEditar');
 const textoEditar=document.getElementById('textoEditar');
 const idEditar=document.getElementById('idEditar');
-const inputBuscar=document.getElementById('buscar');
 //aca llamamos los botones que contienen la informacion a agregar o editar
 const btnTomarFoto=document.getElementById('tomarFoto');
 const btnQuitarFondo=document.getElementById('quitarFondo');
 const imgFondo=document.querySelector('img');
 var imagen='';
-var ultimaBusqueda='';
+var notas=[]
 
-
-/* document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
     contarCartas();
     iniciarBd();
@@ -35,24 +33,15 @@ function onDeviceReady(){
     if(!document.querySelector('.container-fluid').classList.contains('filtro')){
         buscarFoto();
     }
-} */
+}
 
-    contarCartas();
+    /* contarCartas();
     iniciarBd();
     escucharBtn();
     if(!document.querySelector('.container-fluid').classList.contains('filtro')){
-        console.log('dadadada')
         buscarFoto();
     }
-
-
-inputBuscar.addEventListener('keypress',(evento)=>{
-    if(evento.key==='Enter'){
-        const busqueda=inputBuscar.value.toLowerCase();
-        buscarNota(busqueda);
-    }
-})
-
+ */
 //escuchamos al modal agregar, para que cuando se cierre, limpie los inputs
 modalAgregar.addEventListener('hidden.bs.modal', ()=>{
     tituloAgregar.value = '';
@@ -152,7 +141,7 @@ function CrearAlmacen(evento){
 function agregar(evento){
     evento.preventDefault();
     obtenerIdMasAlto().then(idMasAlto => {
-        var titulo=tituloAgregar.value.toLowerCase();
+        var titulo=tituloAgregar.value;
         var contenido=textoAgregar.value;
         var id = idMasAlto+1;
         id=String(id);
@@ -175,7 +164,7 @@ function agregar(evento){
 }
 
 function Mostrar(){
-
+    contenedorCartas.innerHTML=``;
     obtenerNotas().then(notas => {
         notas.sort((a, b) => a.Titulo.localeCompare(b.Titulo));
         MostrarNotas(notas);
@@ -183,10 +172,11 @@ function Mostrar(){
 }
 
 function MostrarNotas(evento){
-    contenedorAnuncios.innerHTML=``;
     contenedorCartas.innerHTML=``;
+    contenedorAnuncios.innerHTML=``;
     contenedorCartas.classList.add('row-cols-2');
     evento.forEach(nota => {
+        nota.Contenido = nota.Contenido.replace(/\n/g, '<br>');
         contenedorCartas.innerHTML += `<div class="col colBorrar">
                                         <div class="card sin-scroll" style="background-color: ${nota.Color}" id="${nota.id}">
                                             <div class="opacity-50 d-none contenedorBorrar row me-1 mt-1 d-flex align-items-center">
@@ -225,8 +215,7 @@ async function obtenerNotas() {
         const transaccion = bd.transaction("Notas");
         const almacen = transaccion.objectStore("Notas");
         const puntero = almacen.openCursor();
-    
-        const notas = [];
+        notas = [];
     
         puntero.addEventListener("success", () => {
             const punteroActual = puntero.result;
@@ -299,85 +288,6 @@ function eliminarNota(evento){
             ['Si','no']     // buttonLabels
         );
     }
-}
-
-function buscarNota(busqueda){
-
-    var buscar=busqueda;
-    ultimaBusqueda=buscar;
-
-    contenedorAnuncios.innerHTML=`<div class="col-12 d-flex justify-content-center mt-3" data-bs-theme="dark">
-                                    <button type="button" class="me-1 rounded-circle border p-2 btn-close" id="btnCancelarBusqueda"></button>
-                                </div>`
-    contenedorCartas.innerHTML=``;
-    const busquedaExtricta=/^"/.test(buscar) && /"$/.test(buscar);
-    const busquedaPorFecha=/^#/.test(buscar);
-    var transaccion = bd.transaction(["Notas"]);
-    var almacen = transaccion.objectStore("Notas");
-
-    if(busquedaPorFecha){
-        var indice=almacen.index('BuscarNotaPorFecha');
-        buscar=buscar.slice(1)
-        var rango=IDBKeyRange.bound(buscar, buscar + "\uFFFF");
-    }else{
-        var indice=almacen.index('BuscarNota');
-        if(busquedaExtricta || buscar==''){
-            buscar=buscar.slice(1, -1);
-            var rango=IDBKeyRange.only(buscar);
-        }else{
-            var rango = IDBKeyRange.bound(buscar, buscar + "\uffff");
-        }
-    }
-
-    
-
-    var puntero=indice.openCursor(rango);
-    puntero.addEventListener('success',mostrarBusqueda);
-}
-
-function mostrarBusqueda(evento){
-    var puntero = evento.target.result;
-    contenedorCartas.classList.add('row-cols-2');
-    if(puntero){
-        contenedorCartas.innerHTML+=`<div class="col colBorrar">
-                                        <div class="card sin-scroll" style="background-color: ${puntero.value.Color}" id="${puntero.value.id}">
-                                            <div class="opacity-50 d-none contenedorBorrar row me-1 mt-1 d-flex align-items-center">
-                                                <div class="col-2">
-                                                    <button type="button" class="atras" ms-3" title="Atras">
-                                                        <i class="fa-solid fa-arrow-left" style="color: #080808;"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-8 d-flex justify-content-center">
-                                                    <span>
-                                                        ${puntero.value.Fecha}
-                                                    </span>
-                                                </div>
-                                                <div class="col-1 d-flex justify-content-center m-0 p-0">
-                                                    <button type="button" class="editar" data-bs-toggle="modal" data-bs-target="#modalEditar">
-                                                        <i class="fa-solid fa-pen-to-square editar" style="color: #000000;">
-                                                    </i></button>
-                                                </div>
-                                                <div class="col-1 d-flex justify-content-center m-0 p-0">
-                                                    <button type="button" class="btn-close btnBorrar me-1"></button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="card-title ">${puntero.value.Titulo}</h5>
-                                                <p class="card-text">${puntero.value.Contenido}</p>
-                                            </div>
-                                        </div>
-                                    </div>`;
-        puntero.continue();
-    }else if(c=contenedorCartas.querySelectorAll('.card').length<=0){
-        contenedorAnuncios.innerHTML+=`<div class="col-12 d-flex justify-content-center">
-                                        <h1 class="text-center opacity-50">
-                                            Sin Resultados
-                                        </h1>
-                                    </div>`
-    }
-    document.getElementById('buscar').value='';
-    contarCartas();
-    document.getElementById('btnCancelarBusqueda').addEventListener('click',Mostrar);
 }
 
 function escucharBtn(){
