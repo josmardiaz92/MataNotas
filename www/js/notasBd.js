@@ -97,10 +97,16 @@ btnQuitarFondo.addEventListener('click',()=>{
 })
 
 function obtenerMedio(e){
-    if(e==1){
-        var medio=Camera.PictureSourceType.CAMERA;
-    }else{
-        var medio=Camera.PictureSourceType.PHOTOLIBRARY;
+    switch (e) {
+        case 1:
+            var medio=Camera.PictureSourceType.CAMERA;
+            break;
+        case 2:
+            var medio=Camera.PictureSourceType.PHOTOLIBRARY;
+            break;
+        default:
+            medio='';
+            break;
     }
     var options = {
         quality: 50, // Calidad de la imagen (50 es media calidad)
@@ -215,12 +221,12 @@ function MostrarNotas(evento){
                                                         ${nota.Fecha}
                                                     </span>
                                                 </div>
-                                                <div class="col-1 d-flex justify-content-center m-0 p-0">
+                                                <div class="col-1 d-flex justify-content-center mt-3 p-0">
                                                     <button type="button" class="editar" data-bs-toggle="modal" data-bs-target="#modalEditar" title="Editar">
                                                         <i class="fa-solid fa-pen-to-square editar" style="color: #000000;">
                                                     </i></button>
                                                 </div>
-                                                <div class="col-1 d-flex justify-content-center m-0 p-0">
+                                                <div class="col-1 td1flex justify-content-center m-0 p-0">
                                                     <button type="button" class="btn-close btnBorrar me-1" title="Eliminar"></button>
                                                 </div>
                                             </div>
@@ -362,18 +368,6 @@ function escucharBtn(){
                 navigator.app.exitApp();
                 break;
         }
-
-        /* if(cartaSeleccionada){
-            if(quitarBusqueda){
-                buscarNota(ultimaBusqueda)
-            }else{
-                Mostrar();
-            }
-        }else if(quitarBusqueda){
-            Mostrar();
-        }else{
-            navigator.app.exitApp();
-        } */
     });
     contenedorCartas.addEventListener('click',(evento)=>{
         if (evento.target.classList.contains('btnBorrar')) {

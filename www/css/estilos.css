@@ -51,9 +51,11 @@ img{
 }
 
 .editar,
-.atras{
+.atras,
+.btnBorrar{
   border: none;
   background-color: unset;
+  height: 48px;
 }
 
 p,
@@ -105,4 +107,20 @@ li button,a,p{
   font-size: medium;
   font-weight: bold;
   all: unset;
+}
+
+#pie button{
+  height: 48px;
+  width: 48px;
+}
+
+#cabeza .row,
+#tituloAgregar{
+  height: 48px;
+}
+
+#cabeza button,
+#btnCancelarBusqueda{
+  height: 48px;
+  width: 48px;
 }
