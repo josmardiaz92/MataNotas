@@ -39,12 +39,12 @@ function onDeviceReady(){
     }
 }
 
-    contarCartas();
+    /* contarCartas();
     iniciarBd();
     escucharBtn();
     if(!document.querySelector('.container-fluid').classList.contains('filtro')){
         buscarFoto();
-    }
+    } */
 
 //escuchamos al modal agregar, para que cuando se cierre, limpie los inputs
 modalAgregar.addEventListener('show.bs.modal',()=>{
@@ -394,12 +394,12 @@ function contarCartas(){
         let pulsado = false;
         let tiempoPulsado = 0;
 
-        carta.addEventListener('mousedown', function(event) {
+        carta.addEventListener('touchstart', function(event) {
             pulsado = true;
             tiempoPulsado = new Date().getTime();
         });
 
-        carta.addEventListener('mouseup', function(event) {
+        carta.addEventListener('touchend', function(event) {
             pulsado = false;
             let tiempoSoltado = new Date().getTime();
             let diferenciaTiempo = tiempoSoltado - tiempoPulsado;
