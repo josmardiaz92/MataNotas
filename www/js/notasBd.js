@@ -39,12 +39,12 @@ function onDeviceReady(){
     }
 }
 
-    /* contarCartas();
+    contarCartas();
     iniciarBd();
     escucharBtn();
     if(!document.querySelector('.container-fluid').classList.contains('filtro')){
         buscarFoto();
-    } */
+    }
 
 //escuchamos al modal agregar, para que cuando se cierre, limpie los inputs
 modalAgregar.addEventListener('show.bs.modal',()=>{
@@ -121,8 +121,8 @@ function obtenerMedio(e){
 
 function colorRamdom() {
     const matiz = Math.floor(Math.random() * 360);
-    const saturacion = Math.random() * 0.8 + 0.2;
-    const ligereza = Math.random() * 0.8 + 0.2;
+    const saturacion = Math.random() * 0.4 + 0.6;
+    const ligereza = Math.random() * 0.3 + 0.7;
     return `hsl(${matiz}, ${saturacion * 100}%, ${ligereza * 100}%)`;
 }
 function obtenerFecha(){
@@ -196,10 +196,11 @@ function agregar(evento){
 
 function Mostrar(){
     contenedorCartas.innerHTML=``;
-    obtenerNotas().then(notas => {
-        notas.sort((a, b) => a.Titulo.localeCompare(b.Titulo));
-        MostrarNotas(notas);
-    });
+    obtenerNotas()
+        .then(notas => {
+            notas.sort((a, b) => a.Titulo.localeCompare(b.Titulo));
+            MostrarNotas(notas);
+        });
 }
 
 function MostrarNotas(evento){
@@ -210,7 +211,7 @@ function MostrarNotas(evento){
         nota.Contenido = nota.Contenido.replace(/\n/g, '<br>');
         contenedorCartas.innerHTML += `<div class="col colBorrar">
                                         <div class="card sin-scroll" style="background-color: ${nota.Color}" id="${nota.id}">
-                                            <div class="opacity-50 d-none contenedorBorrar row me-1 mt-1 d-flex align-items-center">
+                                            <div class="d-none contenedorBorrar row me-1 mt-1 d-flex align-items-center">
                                                 <div class="col-2">
                                                     <button type="button" class="atras ms-3" title="Atras">
                                                         <i class="fa-solid fa-arrow-left" style="color: #080808;"></i>
@@ -242,18 +243,20 @@ function MostrarNotas(evento){
 }
 
 async function obtenerNotas() {
+
     return new Promise((resolve, reject) => {
         const transaccion = bd.transaction("Notas");
         const almacen = transaccion.objectStore("Notas");
         const puntero = almacen.openCursor();
-        notas = [];
     
         puntero.addEventListener("success", () => {
+
             const punteroActual = puntero.result;
             if (punteroActual) {
                 notas.push(punteroActual.value);
                 punteroActual.continue();
             } else {
+                notas=[...new Map(notas.map(item => [item.id, item])).values()];
                 resolve(notas);
             }
         });
@@ -277,7 +280,8 @@ function seleccionarNota(evento){
 
 function editarCarta(carta){
     const titulo=carta.querySelector('.card-title').textContent;
-    const texto=carta.querySelector('.card-text').textContent;
+    const texto=carta.querySelector('.card-text').innerHTML.replace(/<br>/g, '\n');
+
     idEditar.value=carta.id
     tituloEditar.value=titulo;
     textoEditar.value=texto;
@@ -386,18 +390,57 @@ function contarCartas(){
     cartas.forEach(carta=>{
         const contenedorBorrar=carta.querySelector('.contenedorBorrar');
         const btnAtras=carta.querySelector('.atras');
+        
+        let pulsado = false;
+        let tiempoPulsado = 0;
+
+        carta.addEventListener('mousedown', function(event) {
+            pulsado = true;
+            tiempoPulsado = new Date().getTime();
+        });
+
+        carta.addEventListener('mouseup', function(event) {
+            pulsado = false;
+            let tiempoSoltado = new Date().getTime();
+            let diferenciaTiempo = tiempoSoltado - tiempoPulsado;
+
+            const editables=document.querySelectorAll('.editable',null);
+                if(editables){
+                    editables.forEach(editable=>{
+                        let contenedorOpciones=editable.querySelector('.contenedorBorrar');
+                        contenedorOpciones.classList.remove('contenedorOpciones');
+                        contenedorOpciones.classList.add('d-none');
+                        editable.querySelector('.card-body').classList.remove('filtro')
+                        editable.classList.remove('editable');
+                    })
+                }
+        
+            if (diferenciaTiempo >= 500) {
+                carta.classList.add('editable');
+                carta.querySelector('.card-body').classList.add('filtro');
+                contenedorBorrar.classList.add('contenedorOpciones');
+                contenedorBorrar.classList.remove('d-none');
+                // Acción diferente
+            } else {
+                carta.classList.remove('editable');
+                contenedorBorrar.classList.remove('d-none','contenedorOpciones');
+                carta.classList.add('expandida');
+                contenedorCartas.classList.remove('row-cols-2');
+                carta.querySelector('.card-body').classList.remove('filtro');
+            }
+        });
         //escuchamos si el mouse esta encima de la nota
-        carta.addEventListener('mouseover',()=>{
+        /* carta.addEventListener('mouseover',()=>{
             //al pasar por la nota, se muestra el contenedor del boton borra y editar
             contenedorBorrar.classList.remove('d-none');
             carta.classList.add('expandida');
             contenedorCartas.classList.remove('row-cols-2','row-cols-md-4');
-        });
+        }); */
         btnAtras.addEventListener('click',()=>{
             //al salir de la nota, se vuelve a ocultar el contenedor de los botonos borrar y editar
             contenedorBorrar.classList.add('d-none');
             carta.classList.remove('expandida');
-            contenedorCartas.classList.add('row-cols-2','row-cols-md-4');
+            contenedorCartas.classList.add('row-cols-2');
         });
     })
 }

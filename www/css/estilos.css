@@ -63,23 +63,26 @@ h5{
   color: black;
 }
 
-#btn-agregar:active {
+.btn-agregar{
+  border: solid 1px ;
+}
+
+.btn-agregar:active {
   transform: scale(1.3); /* Aumentar el tamaño del botón en un 10% al hacer clic */
-  transition: transform 0.15s ease; /* Agregar una transición suave */
-  background-color: brown;
+  transition: transform .001s ease; /* Agregar una transición suave */
+}
+
+.btn-agregar:hover{
+  background-color: rgba(240, 248, 255, 0.568);
+  border: solid 1px black;
 }
 
 .contenedorBorrar{
   height: 50px;
 }
 
-.tituloPrueba{
-  border: none;
-}
-
 .blur{
   background-color: rgba(240, 248, 255, 0.568);
-  border: none;
 }
 
 #modalTutorial-content {
@@ -96,7 +99,7 @@ h5{
 }
 
 .filtro{
-  filter: blur(20px);
+  filter: blur(2px);
 }
 
 .modal-footer span{
@@ -123,4 +126,29 @@ li button,a,p{
 #btnCancelarBusqueda{
   height: 48px;
   width: 48px;
+}
+
+#cabeza{
+  height: 65px;
+}
+
+.editable{
+  box-shadow: inset 0 0 0 5px rgb(247, 164, 40);
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.editable p{
+  color: rgba(0, 0, 0, 0.377);
+}
+
+.contenedorOpciones{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  z-index: 1;
 }

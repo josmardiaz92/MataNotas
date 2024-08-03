@@ -13,7 +13,7 @@ function buscarNota(notas,busqueda){
     var buscar=busqueda;
     ultimaBusqueda=buscar;
 
-    contenedorAnuncios.innerHTML=`<div class="col-12 d-flex justify-content-center mt-3" data-bs-theme="dark">
+    contenedorAnuncios.innerHTML=`<div class="col-12 d-flex justify-content-center mt-3 mb-4" data-bs-theme="dark">
                                     <button type="button" class="me-1 rounded-circle border p-2 btn-close" id="btnCancelarBusqueda"></button>
                                 </div>`
     contenedorCartas.innerHTML=``;
