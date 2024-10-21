@@ -2,8 +2,9 @@ img{
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  position:fixed;  
+  position: fixed;  
 }
+
 
 #textoAgregar{
     overflow-y: auto; /* Agregar scroll vertical */

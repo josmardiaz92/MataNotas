@@ -5,7 +5,8 @@
   "description": "App de Notas",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cordova run browser"
   },
   "keywords": [
     "ecosystem:cordova"
@@ -14,6 +15,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^13.0.0",
+    "cordova-browser": "^7.0.0",
     "cordova-plugin-app-event": "^1.2.2",
     "cordova-plugin-camera": "^7.0.0",
     "cordova-plugin-dialogs": "^2.0.2",
@@ -22,7 +24,8 @@
   },
   "cordova": {
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ],
     "plugins": {
       "cordova-plugin-network-information": {},
