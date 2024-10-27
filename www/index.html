@@ -1,50 +1,59 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
-            https://cordova.apache.org/docs/en/latest/
-        Some notes:
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> --> <!-- comentamos esta linea para no tener errores -->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css"> <!-- llamamos los estilos del bootstrap -->
+        <link rel="stylesheet" href="fontawesome-free-6.6.0-web/css/all.min.css"> <!-- llamamos los estilos de los iconos -->
         <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
+        <title>Josmar Diaz</title> <!-- colocamos como titulo nuestro nombre, sugiero cambiarlo -->
     </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    <body class="bg-dark"> <!-- le damos esta clase de bootstrap para que se vea oscuro el fondo -->
+        <div class="container-fluid"> <!-- creamos el contenedor donde va a estar toda la app -->
+            <div class="row" id="head"> <!-- cabecera -->
+
+            </div>
+            <div class="row mt-3" id="body"> <!-- cuerpo donde se veran las notas y otras cosas -->
+                <div class="row row-cols-2 g-1" id="contenedorNotas"><!-- contenedor de las notas, donde la clase row-cols-2 me limita el numero de columnas a 2 por linea -->
+                    <!-- notas -->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">titulo</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sapiente assumenda, odit provident consectetur dolore tempore itaque magnam modi, reiciendis cumque dolorem, ullam quia illum non animi accusantium pariatur excepturi.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">titulo</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sapiente assumenda, odit provident consectetur dolore tempore itaque magnam modi, reiciendis cumque dolorem, ullam quia illum non animi accusantium pariatur excepturi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus necessitatibus quos sit reprehenderit explicabo quaerat, voluptatibus possimus deserunt nam, nesciunt dignissimos quas eos debitis, iste corrupti? Voluptas molestias corporis quasi!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">titulo</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sapiente assumenda, odit provident consectetur dolore tempore itaque magnam modi, reiciendis cumque dolorem, ullam quia illum non animi accusantium pariatur excepturi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-end mt-5 me-3" id="foot"> <!-- con d-flex justify-content-end estoy enviando al boton al final de la linea y con mt-5 y me-3 lo alejo de lo que esta arriba de el y del final -->
+                <button type="button" class="btn btn-agregar"> <!-- aca, con tbn-agregar, estoy llamando los estilos de index.css -->
+                    <i class="fa-solid fa-plus" style="color: #000000;"></i> <!-- este es un icono traido de fountaweson para dibujar el + -->
+                </button>
             </div>
         </div>
         <script src="cordova.js"></script>
+        <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script> <!-- aca llamo el js de bootstrap -->
         <script src="js/index.js"></script>
     </body>
 </html>
