@@ -15,7 +15,7 @@
     <body class="bg-dark">
         <div class="container-fluid">
             <div class="row" id="head">
-
+                
             </div>
             <div class="row mt-3" id="body">
                 <div class="row row-cols-2 g-1" id="contenedorNotas">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-end mb-2 me-3 fixed-bottom" id="foot">
-                <button type="button" class="btn btn-agregar" data-bs-toggle="modal" data-bs-target="#modal">
+                <button type="button" class="btn btn-agregar" data-bs-toggle="modal" data-bs-target="#modal" onclick="setTimeout(()=>{document.getElementById('tituloNotas').focus();},500);">
                     <i class="fa-solid fa-plus" style="color: #000000;"></i>
                 </button>
             </div>
@@ -49,6 +49,12 @@
                             </form>
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" id="btnEditar" hidden>Guardar</button>
+                            <button type="button" class="btn" id="btnEliminar" hidden>
+                                <i class="fa-solid fa-trash" style="color: #ffffff;">
+                                    <span class="ms-2">Borrar</span>
+                                </i>
+                            </button>
                             <button type="button" class="btn btn-dark" id="btnAgregar" onclick="notas.agregarNota()">
                                 Agregar
                             </button>
