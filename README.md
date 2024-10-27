@@ -79,5 +79,16 @@ cordova build android
 ***Recursos Adicionales***
 
 > Documentación de [Cordova](https://cordova.apache.org/docs/en/latest/)  
-Foros de Cordova: Busca en foros como Stack Overflow para resolver dudas.
+Foros de Cordova: Busca en foros como Stack Overflow para resolver dudas.  
+
+
+### 7. hacemos un bosquejo general de la aplicacion  
+- Borramos todos los comentarios que nos deja Apache Cordova.  
+- Quitamos todo lo que encontramos en **index.js**.
+- Quitamos todo lo que esta en **index.css**.
+- Quitamos todo lo que esta dentro de la etiqueta **<body>** en **index.html**.
+- agregamos `bootstrap` y `fontAweson` al proyecto.
+- Dentro del **<body>** en **index.html** creamos un contenedor donde dibujaremos lo que serian nuestras notas, ademas del boton desde el cual posteriormente estaremos agregando las notas.  
+#### Nota
+> Cuando se este llamando al `bootstrap`, al `fontAweson` y a nuestras propias librerias, hay que tener en cuenta el orden en que se llaman, porque lo ultimo que se llame, va a ser lo qe tendra mas relevancia sobre los demas (*sobretodo en los estilos*)  
 ___  
