@@ -92,3 +92,41 @@ Foros de Cordova: Busca en foros como Stack Overflow para resolver dudas.
 #### Nota
 > Cuando se este llamando al `bootstrap`, al `fontAweson` y a nuestras propias librerias, hay que tener en cuenta el orden en que se llaman, porque lo ultimo que se llame, va a ser lo qe tendra mas relevancia sobre los demas (*sobretodo en los estilos*)  
 ___  
+## Clase 2  
+#### Objetivos:
+
+- Implementar la funcionalidad de agregar notas.
+- Introducir la programación orientada a objetos.
+
+#### Contenido:
+
+### 1. Solución al problema del texto largo:
+
+Se agregó el estilo `overflow-y: auto; overflow-x: hidden;` a la clase .card para permitir el desplazamiento vertical y evitar que el texto se salga de los límites.
+### 2. Creación del modal:
+
+Se creó un modal utilizando Bootstrap para permitir a los usuarios agregar nuevas notas.  
+El modal contiene un formulario con campos para el título y el contenido de la nota.
+### 3. Almacenamiento de notas:
+
+Se utilizó **localStorage** para persistir las notas entre sesiones del navegador.
+Las notas se almacenan en un array y se serializan como JSON antes de guardarlas en localStorage.
+### 4. Visualización de notas:
+
+Se creó una función para iterar sobre el array de notas y renderizarlas en la página en forma de tarjetas.
+### 5. Introducción a la programación orientada a objetos:
+
+Se creó una clase Nota para representar cada nota, encapsulando sus propiedades (título y contenido) y métodos (guardar, eliminar, editar).
+Se modificó el código existente para utilizar la clase Nota, mejorando la organización y mantenibilidad del código.
+#### Ventajas de la programación orientada a objetos:
+
+- Organización: Agrupa datos y comportamiento relacionados en objetos.
+- Reutilización: Permite crear múltiples objetos a partir de una misma clase.
+- Mantenibilidad: Facilita la modificación y ampliación del código.
+- Abstracción: Oculta la complejidad interna de los objetos.
+### 6. Próximos pasos:
+
+- Implementar los métodos de la clase Nota (eliminar, editar).
+- Auro seleccionar el titulo al empezar a agregar la nota.  
+
+___
