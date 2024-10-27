@@ -1,21 +1,41 @@
 /* ----------------- BODY ------------------- */
-/* le colocamos un limite de alto a las card para que ninguna quede muy larga o muy corta */
 .card{
     height: 250px;
     z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* ----------------- FOOT ------------------- */
-/* le colocamos un color especifico y le damos las dimenciones para que no abarque toda la pantalla */
+
 .btn-agregar{
     border: solid 1px;
     background-color: rgba(240,248,255,0.568);
     height: 48px;
     width: 48px;
 }
-/* haceos que cuando lo pulse, no cambie */
 .btn-agregar:hover{
     background-color: rgba(240,248,255,0.568);
     border: solid 1px;
 }
 
+/* ----------------- MODAL ------------------- */
+
+#textoNotas{
+    overflow-y: auto;
+    overflow-x: hidden;
+    resize: none;
+}
+
+#tituloNotas:hover,
+#tituloNotas:focus,
+#textoNotas:hover,
+#textoNotas:focus{
+    outline: none;
+    text-decoration: none;
+    cursor: default;
+}
+
+form input, textarea{
+    color: aliceblue;
+}
