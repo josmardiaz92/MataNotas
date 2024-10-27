@@ -15,12 +15,22 @@
     <body class="bg-dark">
         <div class="container-fluid">
             <div class="row" id="head">
-                
+                <div class="row mt-2 sticky-top border-bottom border-secondary rounded d-flex justify-content-center" id="head">
+                    <div class="col-lg-5 col-sm-10 m-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" id="buscar" oninput="notas.buscarNota(event)">
+                            <button class="btn btn-light" type="button"><i class="fa-solid fa-gear" style="color: #030303;"></i></button>                        
+                    </div>
+                    </div>
+                </div>
             </div>
             <div class="row mt-3" id="body">
                 <div class="row row-cols-2 g-1" id="contenedorNotas">
 
                 </div>
+                <div class="row row-cols-1" id="contenedorAnuncios">
+
+                </div>                
             </div>
             <div class="row d-flex justify-content-end mb-2 me-3 fixed-bottom" id="foot">
                 <button type="button" class="btn btn-agregar" data-bs-toggle="modal" data-bs-target="#modal" onclick="setTimeout(()=>{document.getElementById('tituloNotas').focus();},500);">

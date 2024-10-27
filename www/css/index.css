@@ -6,6 +6,11 @@
     overflow-x: hidden;
 }
 
+#cancelarBusqueda{
+    height: 48px;
+    width: 48px;
+}  
+
 /* ----------------- FOOT ------------------- */
 
 .btn-agregar{
