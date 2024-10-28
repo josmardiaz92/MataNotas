@@ -220,3 +220,30 @@ Se muestra un mensaje de error si se produce algún error al tomar la foto.
 **Mejor interfaz de usuario:** El menú de opciones en el modal facilita la gestión de las notas y las imágenes.
 **Mayor flexibilidad:** La estructura del código se ha mejorado para permitir futuras ampliaciones.
 ___
+
+#### Objetivos:
+
+- Agregar funcionalidad de color aleatorio a las notas.
+- Implementar la integración con Google Maps para mostrar la ubicación de las notas.
+    - Agregar un botón de ubicación en el modal para seleccionar la ubicación actual.
+- Implementacion del plugin de dialogos para confirmar o no la eliminacion de elementos. 
+- Mejorar la experiencia del usuario permitiendole usar el botón de retroceso del dispositivo.
+### 1. Color aleatorio:
+
+- Se creó una función colorRandom() para generar colores aleatorios en formato HSL.
+- El color generado se asigna a cada nota y se utiliza para el fondo de las tarjetas.
+### 2. Integración con Google Maps:
+
+- Se utilizó el plugin cordova-plugin-geolocation para obtener la ubicación del dispositivo.
+- Se agregó la opción para tomar la ubicacion y almacenarla en un boton.
+    - Dicho boton puede abrir la app de google maps con la ubicación que tiene almacenada, o si se deja precionado nos da la opción de eliminarlo.
+### 3. Cuadros de Dialogos:
+-Se implementó un nuevo método que permite consultar al usuario si desea o no eliminar ciertas cosas (imagenes, ubicacion, notas).
+### 4. Botón de retroceso:
+
+- Se implementó un mecanismo para manejar el botón de retroceso del dispositivo, permitiendo navegar entre las diferentes pantallas de la aplicación.
+#### Detalles adicionales:
+
+>**Geolocalización:** La aplicación puede almacenar la ubicación geográfica de cada nota.
+**Interfaz de usuario mejorada:** El menú de opciones y el botón de retroceso hacen que la aplicación sea más fácil de usar.
+___
