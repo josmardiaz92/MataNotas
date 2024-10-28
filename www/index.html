@@ -56,18 +56,38 @@
                                     <label for="textoNotas" class="form-label" hidden></label>
                                     <textarea class="w-100 border-0 bg-dark" id="textoNotas" placeholder="Contenido..." rows="10"></textarea>
                                 </div>
+                                <div class="m-0 contenedorImg">
+                                    <div class="p-2" id="imgNotas">
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" id="btnEditar" hidden>Guardar</button>
-                            <button type="button" class="btn" id="btnEliminar" hidden>
-                                <i class="fa-solid fa-trash" style="color: #ffffff;">
-                                    <span class="ms-2">Borrar</span>
-                                </i>
-                            </button>
                             <button type="button" class="btn btn-dark" id="btnAgregar" onclick="notas.agregarNota()">
                                 Agregar
                             </button>
+                            <button type="button" class="btn btn-dark" id="btnOpcionesModal" data-bs-toggle="offcanvas" data-bs-target="#opcionesModal" aria-controls="opcionesModal">
+                                <i class="fa-solid fa-ellipsis-vertical" style="color: #ffffff;"></i>
+                            </button>
+                            <div class="offcanvas offcanvas-bottom bg-dark m-0 p-0" tabindex="-1" id="opcionesModal" aria-labelledby="opcionesModalLabel">
+                                <div class="offcanvas-body small">
+                                    <div class="row mt-1 pb-2">
+                                        <button type="button" class="btn" id="btnCamara" onclick="manejador.tomarFoto()">
+                                            <i class="fa-solid fa-camera-retro" style="color: #ffffff;">
+                                                <span class="ms-2">Tomar Foto</span>
+                                            </i>
+                                        </button>
+                                    </div>                                  
+                                    <div class="row mt-1 pb-2">
+                                        <button type="button" class="btn" id="btnEliminar" hidden>
+                                            <i class="fa-solid fa-trash" style="color: #ffffff;">
+                                                <span class="ms-2">Borrar</span>
+                                            </i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+        
                         </div>
                     </div>
                 </div>

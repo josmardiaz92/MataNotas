@@ -1,6 +1,22 @@
 # MataNotas
 Aplicación de notas simple y fácil de usar, desarrollada con Cordova para fines educativos. Permite crear, editar, borrar y guardar notas, así como agregar imágenes y ubicaciones geográficas. Un proyecto ideal para aprender los fundamentos del desarrollo móvil.
 
+###### Dentro de la carpeta Notas se puede encontrar documentacion mas explicita sobre el proyecto
+
+# Comandos  
+- compilar:
+    ~~~
+    cordova build android
+    ~~~
+- Probar en android:
+    ~~~
+    cordova run android
+    ~~~
+- Probar en Browser:
+    ~~~
+    cordova run browser
+    ~~~
+
 ## Clase 1  
 ### Requisitos previos
 - Sistema operativo: Windows, macOS o Linux.  
@@ -129,4 +145,78 @@ Se modificó el código existente para utilizar la clase Nota, mejorando la orga
 - Implementar los métodos de la clase Nota (eliminar, editar).
 - Auro seleccionar el titulo al empezar a agregar la nota.  
 
+___
+
+# Clase 3
+#### Objetivo:
+
+- Implementar la funcionalidad de enfocar automáticamente el campo de título al abrir el modal para agregar una nueva nota.
+- Permitir editar notas existentes directamente en el modal.
+- Agregar la funcionalidad de eliminar notas.
+- Agregar la funcionabilidad de buscar notas.
+- Agregar la funcionalidad de agregar imágenes a las notas.
+- Mejorar la interfaz de usuario con un menú de opciones en el modal.
+
+### 1. Enfocando el campo de título:
+
+Se agregó un evento onclick al botón que abre el modal para llamar un setTimeout() para asegurar que el campo de título reciba el foco después de que el modal se haya abierto completamente.
+### 2. Editando notas:
+
+- Se agregó un botón "Editar" al modal, inicialmente oculto.
+    - Al hacer clic en una nota, el botón "Editar" se muestra y los campos del formulario se rellenan con los datos de la nota seleccionada.
+- Se implementó un evento onclick en el botón "Editar" para guardar los cambios realizados.
+- Se utilizó el índice de la nota en el array para identificar la nota a editar y actualizar sus datos.
+### 3. Eliminando notas:
+
+- Se agregó un botón "Eliminar" al modal.
+    - Al hacer clic en el botón "Eliminar", se elimina la nota seleccionada del array y se actualiza el localStorage.
+#### Puntos Clave:
+
+>Uso de setTimeout(): Para asegurar que el campo de título reciba el foco después de que el modal se haya abierto.
+Manejo de eventos: Se utilizaron eventos onclick para activar las diferentes funcionalidades del modal.
+Manipulación del DOM: Se modificó el DOM para mostrar y ocultar elementos según sea necesario.
+Manejo de arrays: Se utilizó el método splice() para eliminar elementos de un array.
+### 4. Buscar Nota:
+- Agregar un campo de búsqueda:
+
+    - Se crea un input de texto con un icono de lupa para realizar las búsquedas.
+    - Se asigna el evento input a este campo para detectar cada cambio en tiempo real.
+- Crear la función buscarNota():
+
+    - Obtener el texto a buscar: Se extrae el valor del input de búsqueda y se elimina cualquier espacio en blanco al principio y al final.
+    - Filtrar las notas: Se utiliza el método filter() de los arrays para crear un nuevo array con las notas que coincidan con el texto de búsqueda. La coincidencia se realiza comparando el texto de búsqueda (convertido a minúsculas) con el título y el contenido de cada nota (también convertidos a minúsculas).
+    - Mostrar los resultados: Se llama a la función mostrarNotas() pasando el array de notas filtradas como parámetro.
+- Mostrar un mensaje si no hay resultados:
+
+    - Se agrega un condicional para verificar si el array de notas filtradas está vacío.
+        - Si está vacío, se muestra un mensaje indicando que no se encontraron resultados.
+- Agregar un botón para cancelar la búsqueda:
+
+    - Se agrega un botón de cierre con su respectivo método para limpiar el campo de búsqueda y mostrar todas las notas.
+#### Detalles adicionales:
+>**Eficiencia:** Se utiliza el método toLowerCase() para realizar comparaciones sin distinción entre mayúsculas y minúsculas, lo que mejora la eficiencia de la búsqueda.
+**Experiencia de usuario:** Se agrega un mensaje claro cuando no se encuentran resultados.
+**Flexibilidad:** El código es modular y puede adaptarse fácilmente a futuras modificaciones.  
+
+### 5. Reestructuracion de las clases:
+
+- Se agregaron propiedades para almacenar referencias a elementos del DOM como el contenedor de imágenes y el modal.
+- Se crearon métodos para manejar la toma de fotos, agregar imágenes a las notas, eliminar imágenes y mostrar las imágenes en las notas y en el modal.
+### 6. Mejora de la Interfaz
+
+- Se agregó un botón de cámara en el menú de opciones del modal para tomar fotos.
+- Se agregó un contenedor para mostrar las imágenes en el modal.
+- Se implementó un mecanismo para eliminar imágenes individuales.
+### 7. Funcionalidad:
+
+- Se utiliza el plugin `cordova-plugin-camera` para tomar fotos.
+- Se utiliza el plugin `cordova-plugin-file@8.1.0` para manejar las rutas de las imágenes.
+    - Las imágenes se almacenan como URLs en el objeto de la nota.
+Se muestra un mensaje de error si se produce algún error al tomar la foto.
+- Se ha mejorado la experiencia de usuario al permitir editar las imágenes directamente en el modal.
+#### Principales mejoras:
+
+> **Mayor funcionalidad:** La aplicación ahora permite agregar imágenes a las notas, enriqueciendo su contenido.
+**Mejor interfaz de usuario:** El menú de opciones en el modal facilita la gestión de las notas y las imágenes.
+**Mayor flexibilidad:** La estructura del código se ha mejorado para permitir futuras ampliaciones.
 ___

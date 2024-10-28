@@ -9,7 +9,11 @@
 #cancelarBusqueda{
     height: 48px;
     width: 48px;
-}  
+}
+
+h5, p{
+    color: black;
+}
 
 /* ----------------- FOOT ------------------- */
 
@@ -43,4 +47,29 @@
 
 form input, textarea{
     color: aliceblue;
+}
+
+#imgNotas div{
+    position: relative;
+}
+
+.close-img {
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    height: 48px;
+    width: 48px;
+    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.img-fluid:hover + .close-img {
+    opacity: 1;
 }
