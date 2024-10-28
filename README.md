@@ -3,6 +3,17 @@ Aplicación de notas simple y fácil de usar, desarrollada con Cordova para fine
 
 ###### Dentro de la carpeta Notas se puede encontrar documentacion mas explicita sobre el proyecto
 
+#### Luego de clonar el repositorio debe instalar:
+~~~    
+cordova platform add android
+cordova platform add browser
+cordova plugin add cordova-plugin-camera
+cordova plugin add cordova-plugin-dialogs
+cordova plugin add cordova-plugin-file@8.1.0
+cordova plugin add cordova-plugin-geolocation
+
+~~~
+
 # Comandos  
 - compilar:
     ~~~
