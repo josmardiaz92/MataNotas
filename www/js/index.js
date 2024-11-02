@@ -24,12 +24,16 @@ class Notas{
                         <h5 class="card-title text-center">${nota.titulo}</h5>
                         <p class="card-text">${nota.texto}</p>
                     </div>
+                    <div class="contenedorVoces">
+                        ${nota.audio ? nota.audio.map(src=>`
+                            <i class="fa-solid fa-play fa-2xl audio m-3 mt-4" style="color: #484242;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+                        `).join(''):''}
+                    </div>
                     <div class="contenedorImagen p-2">
                         ${nota.imagen ? nota.imagen.map(img => `<img src="${img}" alt="Imagen de la nota" class="img-fluid mt-2">`).join('') : ''}
                     </div>
                 </div>
-            </div>
-        `;
+            `;
         });
     }
     agregarNota(){
@@ -44,7 +48,13 @@ class Notas{
         const color=this.colorRandom();
         var ubicacion;
         document.getElementById('ubicacion').dataset.ubicacion ? ubicacion=document.getElementById('ubicacion').dataset.ubicacion : ubicacion="";
-        this.notas.push({ titulo, texto, imagen, color, ubicacion });
+        const contenedorAudios=document.getElementById('audios');
+        const audios=contenedorAudios.getElementsByTagName('i');
+        const audio=[];
+        for(let i = 0; i < audios.length; i++){
+            audio.push(audios[i].dataset.audio);
+        }
+        this.notas.push({ titulo, texto, imagen, color, ubicacion, audio });
         this.guardarNota();
         this.instModal.hide();
     }
@@ -63,6 +73,8 @@ class Notas{
         const titulo=document.getElementById('tituloNotas');
         const texto=document.getElementById('textoNotas');
         const imagen=document.getElementById('imgNotas');
+        const audios=document.getElementById('audios');
+
         this.modal.setAttribute('name',`${index}`)
         titulo.value=nota.titulo;
         texto.value=nota.texto.replace(/<br>/g, '\n');
@@ -72,14 +84,18 @@ class Notas{
                 <button type="button" class="btn-close close-img " onclick="notas.quitarFoto(event)"></button>
             </div>`
         ).join('') : ''}`;
-
         if(nota.ubicacion!==""){
             btnUbicacion.hidden=false;
             btnUbicacion.dataset.ubicacion=nota.ubicacion;
             btnUbicacion.ontouchstart=()=>{
                 this.activarLink();
             }
-        }    
+        }
+        audios.innerHTML=`${nota.audio ? nota.audio.map(src=>`
+            <div class="mt-3">
+                <i class="fa-solid fa-play fa-2xl audio" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+            </div>`
+        ).join(''):''}`;
 
         this.instModal.show();
 
@@ -121,7 +137,13 @@ class Notas{
         const color=this.notas[index].color;
         var ubicacion;
         document.getElementById('ubicacion').dataset.ubicacion ? ubicacion=document.getElementById('ubicacion').dataset.ubicacion : ubicacion="";
-        this.notas[index]=({ titulo, texto, imagen, color, ubicacion });
+        const contenedorAudios=document.getElementById('audios');
+        const audios=contenedorAudios.getElementsByTagName('i');
+        const audio=[];
+        for(let i = 0; i < audios.length; i++){
+            audio.push(audios[i].dataset.audio);
+        }
+        this.notas[index]=({ titulo, texto, imagen, color, ubicacion, audio });
         this.guardarNota();
     }
     eliminarNota(index){
@@ -168,7 +190,6 @@ class Notas{
         return `hsl(${matiz}, ${saturacion * 100}%, ${ligereza * 100}%)`;
     }
     ponerFoto(img){
-        console.log(img)
         if(notas.modal.classList.contains('show')){
             document.getElementById('imgNotas').innerHTML+=`
                 <div>
@@ -233,6 +254,17 @@ class Notas{
             window.open(btnUbicacion.dataset.ubicacion, "_blank");
         };
     }
+    ponerAudio(src){
+        document.getElementById('audios').innerHTML+=`
+            <div class="mt-2">
+                <i class="fa-solid fa-play fa-2xl audio" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+            </div>
+        `
+        if(notas.modal.hasAttribute('name')){
+            const index=notas.modal.getAttribute('name');
+            notas.editarNota(index);
+        }
+    }
 }
 
 class Manejador{
@@ -241,6 +273,7 @@ class Manejador{
         this.start=document.addEventListener('deviceready',()=>{
             this.iniciarEventos();
         });
+        this.mediaRec=null;
     }
     iniciarEventos(){
         notas.modal.addEventListener('hidden.bs.modal',this.limpiarModal);
@@ -257,6 +290,7 @@ class Manejador{
         document.getElementById('tituloNotas').value='';
         document.getElementById('textoNotas').value='';
         document.getElementById('imgNotas').innerHTML='';
+        document.getElementById('audios').innerHTML='';
         notas.modal.removeAttribute('name');
         const btnUbicacion=document.getElementById('ubicacion');
         btnUbicacion.removeAttribute('data-ubicacion');
@@ -276,6 +310,7 @@ class Manejador{
         function onSuccess(imageURI) {
             const win=(fileEntry)=>{
                 const img=fileEntry.toURL();
+                notas.instOffCanvas.hide()
                 notas.ponerFoto(img)
             };
             const fail=(error)=>{
@@ -333,11 +368,53 @@ class Manejador{
                 navigator.app.exitApp();
                 break;
         }
-    }    
+    }
+    tomarAudio(){
+        const contenedorBtn=document.getElementById('contenedorBtnAudio');
+        const fecha=this.obtenerFecha();
+        var src = cordova.file.dataDirectory + `${fecha.anio}${fecha.mes}${fecha.dia}${fecha.horas}${fecha.minutos}${fecha.segundos}.aac`;
+
+        const win=()=>{
+            notas.ponerAudio(src)
+        }
+        const fail=()=>{
+            console.log('Error');
+        }
+
+        this.mediaRec=new Media(src,win,fail);
+        this.mediaRec.startRecord();
+
+        contenedorBtn.style.display = 'block';
+        notas.instOffCanvas.hide();
+
+    }
+    detenerAudio(){
+        const contenedorBtn=document.getElementById('contenedorBtnAudio');
+        contenedorBtn.style.display = 'none';
+        if(this.mediaRec){
+            this.mediaRec.stopRecord();
+            this.mediaRec.release();
+        }
+    }
+    reproducir(src){
+        const win=()=>{console.log('Reproducción exitosa')};
+        const fail=()=>{console.log('Error de reproducción')};
+        var playback = new Media(src,win,fail);
+        playback.play();
+    }
+    obtenerFecha(){
+        const fechaActual = new Date();
+        const anio = fechaActual.getFullYear();
+        const mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0'); // Agregamos un 0 al inicio si el mes tiene un solo dígito
+        const dia = fechaActual.getDate().toString().padStart(2, '0');
+        const horas = fechaActual.getHours().toString().padStart(2, '0');
+        const minutos = fechaActual.getMinutes().toString().padStart(2, '0');
+        const segundos = fechaActual.getSeconds().toString().padStart(2, '0');
+        return {dia,mes,anio,horas,minutos,segundos}
+    }
 }
 
 const notas=new Notas();
 notas.mostrarNotas(notas.notas);
 const manejador=new Manejador();
 
-/* manejador.iniciarEventos(); */

@@ -56,6 +56,10 @@
                                     <label for="textoNotas" class="form-label" hidden></label>
                                     <textarea class="w-100 border-0 bg-dark" id="textoNotas" placeholder="Contenido..." rows="10"></textarea>
                                 </div>
+                                <div class="contenedorAudios">
+                                    <div class="p-2" id="audios">
+                                    </div>
+                                </div>
                                 <div class="m-0 contenedorImg">
                                     <div class="p-2" id="imgNotas">
                                     </div>
@@ -91,6 +95,13 @@
                                         </button>
                                     </div>
                                     <div class="row mt-1 pb-2">
+                                        <button type="button" class="btn" id="btnTomarAudio" onclick="manejador.tomarAudio()">
+                                            <i class="fa-solid fa-microphone" style="color: #ffffff;">
+                                                <span class="ms-2">Tomar Nota de Voz</span>
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="row mt-1 pb-2">
                                         <button type="button" class="btn" id="btnEliminar" hidden>
                                             <i class="fa-solid fa-trash" style="color: #ffffff;">
                                                 <span class="ms-2">Borrar</span>
@@ -99,11 +110,18 @@
                                     </div>
                                 </div>
                             </div>
-        
                         </div>
                     </div>
                 </div>
-        
+            </div>
+        </div>
+
+        <div class="row mt-1 pb-2" id="contenedorBtnAudio">
+            <button type="button" class="btn" id="btnDetenerAudio" onclick="manejador.detenerAudio()" transition-style="in:circle:center">
+                <i class="fa-solid fa-microphone fa-2xl" style="color: #ffffff;">
+                </i>
+            </button>
+        </div>
 
         <script src="cordova.js"></script>
         <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
