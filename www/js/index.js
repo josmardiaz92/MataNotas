@@ -25,9 +25,7 @@ class Notas{
                         <p class="card-text">${nota.texto}</p>
                     </div>
                     <div class="contenedorVoces">
-                        ${nota.audio ? nota.audio.map(src=>`
-                            <i class="fa-solid fa-play fa-2xl audio m-3 mt-4" style="color: #484242;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
-                        `).join(''):''}
+                        ${nota.audio.length>=1 ? `<i class="fa-solid fa-play fa-2xl audio m-3 mt-4" style="color: #484242;"></i>`:''}
                     </div>
                     <div class="contenedorImagen p-2">
                         ${nota.imagen ? nota.imagen.map(img => `<img src="${img}" alt="Imagen de la nota" class="img-fluid mt-2">`).join('') : ''}
@@ -81,19 +79,18 @@ class Notas{
         imagen.innerHTML=`${nota.imagen ? nota.imagen.map(img => `
             <div>
                 <img src="${img}" alt="Imagen de la nota" class="img-fluid mt-2">
-                <button type="button" class="btn-close close-img " onclick="notas.quitarFoto(event)"></button>
+                <button type="button" class="btn-close close-img " onclick="notas.quitarMultimedia(event)"></button>
             </div>`
         ).join('') : ''}`;
         if(nota.ubicacion!==""){
             btnUbicacion.hidden=false;
             btnUbicacion.dataset.ubicacion=nota.ubicacion;
-            btnUbicacion.ontouchstart=()=>{
-                this.activarLink();
-            }
+            
         }
         audios.innerHTML=`${nota.audio ? nota.audio.map(src=>`
-            <div class="mt-3">
-                <i class="fa-solid fa-play fa-2xl audio" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+            <div class="mt-3 d-flex justify-content-star">
+                    <i class="fa-solid fa-play fa-2xl" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+                    <button type="button" class="btn-close ms-auto" onclick="notas.quitarMultimedia(event)"></button>
             </div>`
         ).join(''):''}`;
 
@@ -194,7 +191,7 @@ class Notas{
             document.getElementById('imgNotas').innerHTML+=`
                 <div>
                     <img src="${img}" alt="" class="img-fluid mt-2">
-                    <button type="button" class="btn-close close-img " onclick="notas.quitarFoto(event)"></button>
+                    <button type="button" class="btn-close close-img " onclick="notas.quitarMultimedia(event)"></button>
                 </div>`;
             if(notas.modal.hasAttribute('name')){
                 const index=notas.modal.getAttribute('name');
@@ -202,7 +199,7 @@ class Notas{
             }
         }
     }
-    quitarFoto(event){
+    quitarMultimedia(event){
         const evento=event.target;
         manejador.confirmacion()
         .then(res=>{
@@ -234,10 +231,11 @@ class Notas{
     
         timeoutId = setTimeout(() => {
             manejador.confirmacion()
-                .then(res => {
-                    if (res === 1) {
+                .then(res=>{
+                    if (res===1) {
                         btnUbicacion.hidden = true;
                         btnUbicacion.removeAttribute('data-ubicacion');
+                        
                         if(notas.modal.hasAttribute('name')){
                             const index=notas.modal.getAttribute('name');
                             notas.editarNota(index);
@@ -248,16 +246,16 @@ class Notas{
                     console.log(error);
                 });
         }, 500); // Espera 500 ms antes de llamar a confirmacion
-    
         btnUbicacion.onmouseup=()=>{
             clearTimeout(timeoutId);
             window.open(btnUbicacion.dataset.ubicacion, "_blank");
-        };
+        };        
     }
     ponerAudio(src){
         document.getElementById('audios').innerHTML+=`
-            <div class="mt-2">
-                <i class="fa-solid fa-play fa-2xl audio" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+            <div class="mt-3 d-flex justify-content-star">
+                    <i class="fa-solid fa-play fa-2xl" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+                    <button type="button" class="btn-close ms-auto" onclick="notas.quitarMultimedia(event)"></button>
             </div>
         `
         if(notas.modal.hasAttribute('name')){
@@ -265,6 +263,7 @@ class Notas{
             notas.editarNota(index);
         }
     }
+    
 }
 
 class Manejador{
