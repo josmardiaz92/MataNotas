@@ -5,12 +5,13 @@ Aplicación de notas simple y fácil de usar, desarrollada con Cordova para fine
 
 #### Luego de clonar el repositorio debe instalar:
 ~~~    
-cordova platform add android
-cordova platform add browser
-cordova plugin add cordova-plugin-camera
-cordova plugin add cordova-plugin-dialogs
-cordova plugin add cordova-plugin-file@8.1.0
-cordova plugin add cordova-plugin-geolocation
+cordova platform add android@13.0.0
+cordova platform add browser@7.0.0
+cordova plugin add cordova-plugin-camera@7.0.0
+cordova plugin add cordova-plugin-dialogs@2.0.2
+cordova plugin add cordova-plugin-file@8.1.2
+cordova plugin add cordova-plugin-geolocation@5.0.0
+cordova plugin add cordova-plugin-media@7.0.0  
 
 ~~~
 
@@ -231,6 +232,7 @@ Se muestra un mensaje de error si se produce algún error al tomar la foto.
 **Mejor interfaz de usuario:** El menú de opciones en el modal facilita la gestión de las notas y las imágenes.
 **Mayor flexibilidad:** La estructura del código se ha mejorado para permitir futuras ampliaciones.
 ___
+## Clase 4
 
 #### Objetivos:
 
@@ -258,3 +260,74 @@ ___
 >**Geolocalización:** La aplicación puede almacenar la ubicación geográfica de cada nota.
 **Interfaz de usuario mejorada:** El menú de opciones y el botón de retroceso hacen que la aplicación sea más fácil de usar.
 ___
+
+## Clase 5
+### Objetivos:
+- Agregar funciones para la captura, almacenamiento y reproducción de audio.
+- Personalizacion de la app.
+- Agregar politicas de seguridad.
+
+### 1. Integración del Plugin de Audio
+En esta clase, nos enfocaremos en agregar la funcionalidad de grabación y reproducción de audio a nuestra aplicación. Para ello, utilizaremos el plugin cordova-plugin-media.
+
+Instalación del Plugin
+~~~
+cordova plugin add cordova-plugin-media
+~~~
+##### Uso del Plugin
+Este plugin nos proporciona una serie de métodos para interactuar con archivos de audio. Los más relevantes para nuestro proyecto son:
+
+- startRecord: Inicia la grabación de un archivo de audio.
+- stopRecord: Detiene la grabación de un archivo de audio.
+- release: Libera los recursos de audio del sistema operativo.
+- play: Inicia o reanuda la reproducción de un archivo de audio.
+
+### 2. Personalización de la Aplicación
+Para personalizar nuestra aplicación, realizaremos los siguientes cambios en el archivo config.xml:
+~~~
+<platform name="android">
+        <icon src="www/img/icon-ldpi.png" density="ldpi"/>
+        <icon src="www/img/icon-mdpi.png" density="mdpi" />
+        <icon src="www/img/icon-hdpi.png" density="hdpi" />
+        <icon src="www/img/icon-xhdpi.png" density="xhdpi" />
+        <icon src="www/img/icon-xxhdpi.png" density="xxhdpi" />
+        <icon src="www/img/icon-xxxhdpi.png" density="xxxhdpi" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/img/logo.png"/>
+        <preference name="AndroidWindowSplashScreenBackground" value="#da7391" />
+    </platform>
+~~~
+
+>Las etiquetas `<icon>` se usa para el icono de la app y en este caso hacen referencia a las imagenes previamente almacenadas dentro de la carpeta raiz del proyecto y configuradas con las siguientes expecificaciones para adaptarse a diferentes dispositivos: ldpi    : 36x36 px, mdpi    : 48x48 px, hdpi    : 72x72 px, xhdpi   : 96x96 px, xxhdpi  : 144x144 px, xxxhdpi : 192x192 px.
+La etiqueta con el name `AndroidWindowSplashScreenAnimatedIcon` es para la imagen de la animacion de cuando se inicia la app y su valor es la imagen previamente almacenada en la carpeta raiz del proyecto.
+la etiqueta con el name `AndroidWindowSplashScreenBackground` es para el color de fondo de la animacion de cuando se inicia la app y su valor es un color RGB.
+
+### 3. Política de Seguridad
+Agregar una etiqueta <meta> con el atributo http-equiv="Content-Security-Policy" para definir la política de seguridad de la aplicación.
+
+~~~
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+~~~
+
+donde:
+1.	default-src: Esta linea define la política de origen por defecto para la mayoría de los recursos (scripts, estilos, imágenes, etc.) que no tengan una directiva específica.
+    1. Valores:
+        - `'self'`: Permite cargar recursos del mismo origen que la página.
+        - `data:`: Permite cargar recursos que se utilizan en formato de URL de datos (data URLs).
+        - `https://ssl.gstatic.com`: Permite cargar recursos desde este dominio específico.
+        - `'unsafe-eval'`: Permite la evaluación de código JavaScript a través de `eval()` y funciones similares (esto puede representar un riesgo de seguridad).
+
+2. style-src: Define de dónde se pueden cargar las hojas de estilo (CSS).
+    2. Valores:
+          - `'self'`: Permite cargar estilos del mismo origen.
+          - `'unsafe-inline'`: Permite el uso de estilos en línea (esto también puede ser un riesgo de seguridad).
+
+3. media-src: Define de dónde se pueden cargar recursos multimedia (audio, video, etc.).
+    3. Valores:
+        - `*`: Permite cargar recursos de cualquier origen, lo cual es muy permisivo.
+
+4. img-src: Define de dónde se pueden cargar imágenes.
+    4. Valores:
+          - `'self'`: Permite cargar imágenes del mismo origen.
+          - `data:`: Permite cargar imágenes en formato de URL de datos.
+          - `content:`: Este valor es menos común y puede estar relacionado con el contenido de las imágenes.
+___  

@@ -25,7 +25,7 @@ class Notas{
                         <p class="card-text">${nota.texto}</p>
                     </div>
                     <div class="contenedorVoces">
-                        ${nota.audio.length>=1 ? `<i class="fa-solid fa-play fa-2xl audio m-3 mt-4" style="color: #484242;"></i>`:''}
+                        ${nota.audio && nota.audio.length >= 1 ?`<i class="fa-solid fa-play fa-2xl audio m-3 mt-4" style="color: #484242;"></i>`:''}
                     </div>
                     <div class="contenedorImagen p-2">
                         ${nota.imagen ? nota.imagen.map(img => `<img src="${img}" alt="Imagen de la nota" class="img-fluid mt-2">`).join('') : ''}
@@ -416,4 +416,5 @@ class Manejador{
 const notas=new Notas();
 notas.mostrarNotas(notas.notas);
 const manejador=new Manejador();
+
 
