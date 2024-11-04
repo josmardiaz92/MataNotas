@@ -89,8 +89,11 @@ class Notas{
         }
         audios.innerHTML=`${nota.audio ? nota.audio.map(src=>`
             <div class="mt-3 d-flex justify-content-star">
-                    <i class="fa-solid fa-play fa-2xl" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
-                    <button type="button" class="btn-close ms-auto" onclick="notas.quitarMultimedia(event)"></button>
+                    <i class="fa-solid fa-play fa-2xl ms-4" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+                    <button type="button" class="btn ms-auto me-4"  onclick="notas.quitarMultimedia(event)">
+                        <i class="fa-solid fa-trash fa-xl" style="color: #ffffffab;">
+                        </i>
+                    </button>
             </div>`
         ).join(''):''}`;
 
@@ -254,8 +257,11 @@ class Notas{
     ponerAudio(src){
         document.getElementById('audios').innerHTML+=`
             <div class="mt-3 d-flex justify-content-star">
-                    <i class="fa-solid fa-play fa-2xl" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
-                    <button type="button" class="btn-close ms-auto" onclick="notas.quitarMultimedia(event)"></button>
+                    <i class="fa-solid fa-play fa-2xl ms-4" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+                    <button type="button" class="btn ms-auto me-4"  onclick="notas.quitarMultimedia(event)">
+                        <i class="fa-solid fa-trash fa-xl" style="color: #ffffffab;">
+                        </i>
+                    </button>
             </div>
         `
         if(notas.modal.hasAttribute('name')){
@@ -289,7 +295,7 @@ class Manejador{
         document.getElementById('tituloNotas').value='';
         document.getElementById('textoNotas').value='';
         document.getElementById('imgNotas').innerHTML='';
-        document.getElementById('audios').innerHTML='';
+        /* document.getElementById('audios').innerHTML=''; */
         notas.modal.removeAttribute('name');
         const btnUbicacion=document.getElementById('ubicacion');
         btnUbicacion.removeAttribute('data-ubicacion');
@@ -371,7 +377,7 @@ class Manejador{
     tomarAudio(){
         const contenedorBtn=document.getElementById('contenedorBtnAudio');
         const fecha=this.obtenerFecha();
-        var src = cordova.file.dataDirectory + `${fecha.anio}${fecha.mes}${fecha.dia}${fecha.horas}${fecha.minutos}${fecha.segundos}.aac`;
+        var src = cordova.file.dataDirectory + `${fecha.anio}${fecha.mes}${fecha.dia}${fecha.horas}${fecha.minutos}${fecha.segundos}.mp3`;
 
         const win=()=>{
             notas.ponerAudio(src)

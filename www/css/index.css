@@ -97,6 +97,16 @@ form input, textarea{
     background-color: rgba(0, 0, 0, 0.793);
 }
 
+#audios div{
+    height: 60px;
+    align-items: center;
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, 0.486);
+    border: 10px;
+    box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.2) ;
+}
+
+
 
 @keyframes circle-in-center {
     from {
