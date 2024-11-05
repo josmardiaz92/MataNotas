@@ -8,7 +8,6 @@ class Notas{
         this.instOffCanvas=new bootstrap.Offcanvas('#opcionesModal');
         this.Offcanvas=document.getElementById('opcionesModal')
     }
-
     obtenerNotas(){
         let notasGuardadas=JSON.parse(localStorage.getItem('notas'));
         return notasGuardadas || []
@@ -20,15 +19,43 @@ class Notas{
             this.contenedor.innerHTML+=`
                 <div class="col">
                 <div class="card" onclick="notas.seleccionarNota(${index})" id="${index}" style="background-color: ${nota.color}">
+                    ${nota.audio && nota.audio.length >= 1 || nota.ubicacion!=='' || nota.imagen && nota.imagen.length>=1 ? `
+                        <div class="card-header d-flex justify-content-end sticky-top border-0 rounded-bottom" style="background-color: ${nota.color}" >
+                            <div class="contenedorUbicacion">
+                                ${nota.ubicacion!=='' ? `
+                                    <div class="mt-1">
+                                        <i class="fa-solid fa-location-dot fa-sm"></i>
+                                    </div>
+                                `:''}
+                            </div>
+                            <div class="contenedorVoces me-3 mt-1">
+                                ${nota.audio && nota.audio.length >= 1 ? `
+                                    <span class="position-absolute top-0 star-0 ms-5 translate-middle badge rounded-pill bg-success">
+                                        ${nota.audio.length}
+                                    </span>
+                                    <i class="fa-solid fa-play fa-sm ms-4"></i>
+                                `:''}
+                            </div>
+                            <div class="contenedorVoces me-3 mt-1">
+                                ${nota.imagen && nota.imagen.length >= 1 ? `
+                                    <span class="position-absolute top-0 star-0 ms-5 translate-middle badge rounded-pill bg-success">
+                                        ${nota.imagen.length}
+                                    </span>
+                                    <i class="fa-solid fa-image fa-sm ms-4"></i>
+                                `:''}
+                            </div>
+                        </div>
+                    `: ''}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nota.titulo}</h5>
                         <p class="card-text">${nota.texto}</p>
                     </div>
-                    <div class="contenedorVoces">
-                        ${nota.audio && nota.audio.length >= 1 ?`<i class="fa-solid fa-play fa-2xl audio m-3 mt-4" style="color: #484242;"></i>`:''}
-                    </div>
-                    <div class="contenedorImagen p-2">
-                        ${nota.imagen ? nota.imagen.map(img => `<img src="${img}" alt="Imagen de la nota" class="img-fluid mt-2">`).join('') : ''}
+                    <div class="contenedorImagen m-1 row">
+                        ${nota.imagen ? nota.imagen.map(img => `
+                            <div class="col-4 p-1">
+                                <img src="${img}" alt="Imagen de la nota" class="img-fluid mt-2 rounded shadow-lg">
+                            </div>
+                        `).join('') : ''}
                     </div>
                 </div>
             `;
@@ -89,11 +116,8 @@ class Notas{
         }
         audios.innerHTML=`${nota.audio ? nota.audio.map(src=>`
             <div class="mt-3 d-flex justify-content-star">
-                    <i class="fa-solid fa-play fa-2xl ms-4" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
-                    <button type="button" class="btn ms-auto me-4"  onclick="notas.quitarMultimedia(event)">
-                        <i class="fa-solid fa-trash fa-xl" style="color: #ffffffab;">
-                        </i>
-                    </button>
+                    <i class="fa-solid fa-play fa-2xl ms-4 audio" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+                    <i class="fa-solid fa-trash fa-xl ms-auto me-4" style="color: #ffffffab;" onclick="notas.quitarMultimedia(event)"></i>
             </div>`
         ).join(''):''}`;
 
@@ -138,7 +162,7 @@ class Notas{
         var ubicacion;
         document.getElementById('ubicacion').dataset.ubicacion ? ubicacion=document.getElementById('ubicacion').dataset.ubicacion : ubicacion="";
         const contenedorAudios=document.getElementById('audios');
-        const audios=contenedorAudios.getElementsByTagName('i');
+        const audios=contenedorAudios.querySelectorAll('.audio');
         const audio=[];
         for(let i = 0; i < audios.length; i++){
             audio.push(audios[i].dataset.audio);
@@ -257,11 +281,9 @@ class Notas{
     ponerAudio(src){
         document.getElementById('audios').innerHTML+=`
             <div class="mt-3 d-flex justify-content-star">
-                    <i class="fa-solid fa-play fa-2xl ms-4" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
-                    <button type="button" class="btn ms-auto me-4"  onclick="notas.quitarMultimedia(event)">
-                        <i class="fa-solid fa-trash fa-xl" style="color: #ffffffab;">
-                        </i>
-                    </button>
+                    <i class="fa-solid fa-play fa-2xl ms-4 audio" style="color: #ffffff;" onclick="manejador.reproducir('${src}')" data-audio="${src}"></i>
+                    <i class="fa-solid fa-trash fa-xl ms-auto me-4" style="color: #ffffffab;" onclick="notas.quitarMultimedia(event)">
+                    </i>
             </div>
         `
         if(notas.modal.hasAttribute('name')){
@@ -295,7 +317,7 @@ class Manejador{
         document.getElementById('tituloNotas').value='';
         document.getElementById('textoNotas').value='';
         document.getElementById('imgNotas').innerHTML='';
-        /* document.getElementById('audios').innerHTML=''; */
+        document.getElementById('audios').innerHTML='';
         notas.modal.removeAttribute('name');
         const btnUbicacion=document.getElementById('ubicacion');
         btnUbicacion.removeAttribute('data-ubicacion');
@@ -377,7 +399,7 @@ class Manejador{
     tomarAudio(){
         const contenedorBtn=document.getElementById('contenedorBtnAudio');
         const fecha=this.obtenerFecha();
-        var src = cordova.file.dataDirectory + `${fecha.anio}${fecha.mes}${fecha.dia}${fecha.horas}${fecha.minutos}${fecha.segundos}.mp3`;
+        var src = cordova.file.dataDirectory + `${fecha.anio}${fecha.mes}${fecha.dia}${fecha.horas}${fecha.minutos}${fecha.segundos}.aac`;
 
         const win=()=>{
             notas.ponerAudio(src)
