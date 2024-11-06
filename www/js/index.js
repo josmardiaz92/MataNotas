@@ -21,9 +21,9 @@ class Notas{
                 <div class="card" onclick="notas.seleccionarNota(${index})" id="${index}" style="background-color: ${nota.color}">
                     ${nota.audio && nota.audio.length >= 1 || nota.ubicacion!=='' || nota.imagen && nota.imagen.length>=1 ? `
                         <div class="card-header d-flex justify-content-end sticky-top border-0 rounded-bottom" style="background-color: ${nota.color}" >
-                            <div class="contenedorUbicacion">
+                            <div class="contenedorUbicacion mt-1 me-auto">
                                 ${nota.ubicacion!=='' ? `
-                                    <div class="mt-1">
+                                    <div>
                                         <i class="fa-solid fa-location-dot fa-sm"></i>
                                     </div>
                                 `:''}
