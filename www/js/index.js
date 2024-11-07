@@ -309,7 +309,8 @@ class Manejador{
         notas.Offcanvas.addEventListener('hidden.bs.offcanvas',()=>{this.pantallaActual='modalAbierto'});
         document.addEventListener("backbutton",()=>{
             this.atras()
-        });        
+        });
+        const tutorial=new Tutorial();    
     }
     limpiarModal(){
         document.getElementById('btnEliminar').hidden=true;
