@@ -137,10 +137,16 @@ form input, textarea{
 }
 
 .logoModal {
-    height: 45vh;
+    height: 15vh;
     position: absolute;
-    top: -20vh;
-    right: -20vh;
+    top: -5vh;
+    right: -5vh;
     background-color: transparent;
     border: none;
+}
+
+li button,a,p{
+    font-size: medium;
+    font-weight: bold;
+    all: unset;
 }

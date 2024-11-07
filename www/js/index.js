@@ -337,7 +337,6 @@ class Tutorial{
         this.instModalTutorial=new bootstrap.Modal(this.modalTutorial);
         this.tutorialIndex=0;
         this.btnConfirm=document.getElementById('btnConfirm');
-        this.star=this.confirmar();
     }
     confirmar(){
         const confirmacion=localStorage.getItem('confirmacion',null);
@@ -355,6 +354,7 @@ class Tutorial{
         const btnAnterior=document.getElementById('btnAnterior');
         const btnFin=document.getElementById('btnFin');
         const tutorialActual=this.tutoriales[this.tutorialIndex];
+        manejador.pantallaActual='tutorial';
 
         document.getElementById('tutorialTitulo').textContent=tutorialActual.titulo;
         document.getElementById('tutorialContenido').textContent=tutorialActual.texto;
@@ -406,13 +406,16 @@ class Manejador{
         this.mediaRec=null;
     }
     iniciarEventos(){
-        const tutorial=new Tutorial();
-        if(tutorial.confirmar()){this.pantallaActual='tutorial'};
+        if(!tutorial.confirmar()){
+            tutorial.confirmar();
+        };
         notas.modal.addEventListener('hidden.bs.modal',this.limpiarModal);
         notas.modal.addEventListener('show.bs.modal',()=>{this.pantallaActual='modalAbierto'});
         notas.Offcanvas.addEventListener('show.bs.offcanvas',()=>{this.pantallaActual='offCanvas'});
         notas.Offcanvas.addEventListener('hidden.bs.offcanvas',()=>{this.pantallaActual='modalAbierto'});
         tutorial.modalTutorial.addEventListener('hidden.bs.modal',()=>{this.pantallaActual=''});
+        modalContactos.addEventListener('hidden.bs.modal',()=>{manejador.pantallaActual=''});
+
         document.addEventListener("backbutton",()=>{
             this.atras()
         });
@@ -506,6 +509,14 @@ class Manejador{
                 break;
             case 'tutorial':
                 break;
+            case 'configuraciones':
+                instModalConfiguraciones.hide();
+                this.pantallaActual='';
+                break;
+            case 'contactos':
+                instModalContactos.hide();
+                this.pantallaActual='';
+                break;
             default:
                 navigator.app.exitApp();
                 break;
@@ -556,6 +567,11 @@ class Manejador{
     }
 }
 
+const modalContactos=document.getElementById('modalContactos');
+const instModalConfiguraciones = new bootstrap.Modal('#modalConfiguraciones');
+const instModalContactos= new bootstrap.Modal(modalContactos);
+
 const notas=new Notas();
 notas.mostrarNotas(notas.notas);
+const tutorial=new Tutorial();
 const manejador=new Manejador();
