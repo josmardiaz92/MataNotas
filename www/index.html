@@ -80,9 +80,16 @@
                             <div class="offcanvas offcanvas-bottom bg-dark m-0 p-0" tabindex="-1" id="opcionesModal" aria-labelledby="opcionesModalLabel">
                                 <div class="offcanvas-body small">
                                     <div class="row mt-1 pb-2">
-                                        <button type="button" class="btn" id="btnCamara" onclick="manejador.tomarFoto()">
+                                        <button type="button" class="btn" id="btnCamara" onclick="manejador.tomarFoto('camara')">
                                             <i class="fa-solid fa-camera-retro" style="color: #ffffff;">
                                                 <span class="ms-2">Tomar Foto</span>
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div class="row mt-1 pb-2">
+                                        <button type="button" class="btn" id="btnAlbum" onclick="manejador.tomarFoto('album')">
+                                            <i class="fa-solid fa-camera-retro" style="color: #ffffff;">
+                                                <span class="ms-2">Subir Foto</span>
                                             </i>
                                         </button>
                                     </div>
@@ -146,7 +153,6 @@
 
         <script src="cordova.js"></script>
         <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
-        <script src="js/tutorial.js"></script>
         <script src="js/index.js"></script>
     </body>
 </html>

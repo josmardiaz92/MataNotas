@@ -294,6 +294,109 @@ class Notas{
     
 }
 
+class Tutorial{
+    constructor(){
+        this.tutoriales = [
+            {
+                imagen: '',
+                titulo: 'Bienvenido a MataNotas',
+                texto: 'MataNotas es una app que te permite crear notas y organizar tus ideas y recordatorios de una forma fácil y divertida.',
+            },
+            {
+                imagen: '',
+                titulo: 'Agregar Nota',
+                texto: 'Para agregar una nota, simplemente pulsa el botón de "+" en la parte inferior. Añade un título y el contenido de tu nota y ¡listo!',
+            },
+            {
+                imagen: '',
+                titulo: '¡Tambien puedes agregar fotos a tus notas!',
+                texto: 'Una vez estes dentro de una nota vieja o nueva, encontraras un botón de opciones en la parte de abajo, si das clic ahí, podrás elegir la opción de tomar foto o de subir una y agregarla a tu nota, ¡Agrega tantas como quieras!',
+            },
+            {
+                imagen: '',
+                titulo: '¿Audios?',
+                texto: '¡Por supuesto! los audios también están a la orden del día y los agregas de forma similar a las fotos.',
+            },
+            {
+                imagen: '',
+                titulo: 'Características adicionales',
+                texto: 'Además de fotos y audios, también puedes almacenar una ubicación por nota. Sí encontraste un super descuento o necesitas tomar nota de un lugar especial... tómale una foto, escribe o habla sobre ese lugar y guarda su ubicación para poder llegar ahí nuevamente',
+            },
+            {
+                imagen: '',
+                titulo: '¿Necesitas eliminar algo?',
+                texto: 'Si necesitas quitar la ubicación, solo déjala presionada y podrás eliminarlas. Sí es una nota, debes entrar en ella y buscar la opción "Eliminar Nota", el resto de elementos muestran una "x" o una papelera para eliminarlos',
+            },
+            {
+                imagen: '',
+                titulo: 'Esperamos que te guste',
+                texto: 'El resto de la aplicación es muy intuitiva, pero si tienes alguna duda déjanosla saber en Google Play o en cualquiera de nuestros contactos que encontraras en las configuraciones',
+            },
+        ];
+        this.modalTutorial=document.getElementById('modalTutorial');
+        this.instModalTutorial=new bootstrap.Modal(this.modalTutorial);
+        this.tutorialIndex=0;
+        this.btnConfirm=document.getElementById('btnConfirm');
+        this.star=this.confirmar();
+    }
+    confirmar(){
+        const confirmacion=localStorage.getItem('confirmacion',null);
+        if(confirmacion!=='true'){
+            this.mostrarTutorial();
+            return true
+        }else{
+            this.btnConfirm.checked=true;
+            return false
+        }
+    }
+    mostrarTutorial(){
+        this.instModalTutorial.show();
+        const btnSiguiente=document.getElementById('btnSiguiente');
+        const btnAnterior=document.getElementById('btnAnterior');
+        const btnFin=document.getElementById('btnFin');
+        const tutorialActual=this.tutoriales[this.tutorialIndex];
+
+        document.getElementById('tutorialTitulo').textContent=tutorialActual.titulo;
+        document.getElementById('tutorialContenido').textContent=tutorialActual.texto;
+        if(tutorialActual.imagen!==''){
+            document.getElementById('tutorialImagen').src=tutorialActual.imagen;
+        }
+        
+        if(this.tutorialIndex===this.tutoriales.length-1){
+            btnSiguiente.classList.add('d-none');
+            btnFin.classList.remove('d-none');
+        }else{
+            btnSiguiente.classList.remove('d-none');
+            btnFin.classList.add('d-none');
+        }
+        if(this.tutorialIndex===0){
+            btnAnterior.classList.add('d-none');
+        }else{
+    
+            btnAnterior.classList.remove('d-none');
+        }
+
+        btnSiguiente.onclick=()=>{
+            this.tutorialIndex++;
+            this.mostrarTutorial();
+        }
+        btnAnterior.onclick=()=>{
+            this.tutorialIndex--;
+            this.mostrarTutorial();
+        }
+        btnFin.onclick=()=>{
+            this.instModalTutorial.hide();
+        }
+        this.btnConfirm.onchange=()=>{
+            if(this.btnConfirm.checked){
+                localStorage.setItem('confirmacion',true);
+            }else{
+                localStorage.removeItem('confirmacion',false);
+            }
+        }
+    }
+}
+
 class Manejador{
     constructor(){
         this.pantallaActual='';
@@ -303,14 +406,16 @@ class Manejador{
         this.mediaRec=null;
     }
     iniciarEventos(){
+        const tutorial=new Tutorial();
+        if(tutorial.confirmar()){this.pantallaActual='tutorial'};
         notas.modal.addEventListener('hidden.bs.modal',this.limpiarModal);
         notas.modal.addEventListener('show.bs.modal',()=>{this.pantallaActual='modalAbierto'});
         notas.Offcanvas.addEventListener('show.bs.offcanvas',()=>{this.pantallaActual='offCanvas'});
         notas.Offcanvas.addEventListener('hidden.bs.offcanvas',()=>{this.pantallaActual='modalAbierto'});
+        tutorial.modalTutorial.addEventListener('hidden.bs.modal',()=>{this.pantallaActual=''});
         document.addEventListener("backbutton",()=>{
             this.atras()
         });
-        const tutorial=new Tutorial();    
     }
     limpiarModal(){
         document.getElementById('btnEliminar').hidden=true;
@@ -325,11 +430,16 @@ class Manejador{
         btnUbicacion.hidden=true;
         notas.mostrarNotas(notas.notas);
     }
-    tomarFoto(){
+    tomarFoto(medio){
+        if(medio==='camara'){
+            medio=Camera.PictureSourceType.CAMERA;
+        }else if(medio==='album'){
+            medio=Camera.PictureSourceType.PHOTOLIBRARY;
+        }
         var options={
             quality: 50,
             destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: medio,
             correctOrientation: true,
             //saveToPhotoAlbum: true, // Guarda la foto en la galería del dispositivo
             encodingType: Camera.EncodingType.JPEG
@@ -338,8 +448,10 @@ class Manejador{
         function onSuccess(imageURI) {
             const win=(fileEntry)=>{
                 const img=fileEntry.toURL();
-                notas.instOffCanvas.hide()
-                notas.ponerFoto(img)
+                if(notas.modal.classList.contains('show')){
+                    notas.instOffCanvas.hide()
+                    notas.ponerFoto(img)
+                }
             };
             const fail=(error)=>{
                 console.error('error al guardar foto ',error);
@@ -391,6 +503,8 @@ class Manejador{
             case 'offCanvas':
                 notas.instOffCanvas.hide();
                 this.pantallaActual='modalAbierto';
+                break;
+            case 'tutorial':
                 break;
             default:
                 navigator.app.exitApp();
@@ -445,5 +559,3 @@ class Manejador{
 const notas=new Notas();
 notas.mostrarNotas(notas.notas);
 const manejador=new Manejador();
-
-
