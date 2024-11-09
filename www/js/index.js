@@ -414,8 +414,7 @@ class Manejador{
         notas.Offcanvas.addEventListener('show.bs.offcanvas',()=>{this.pantallaActual='offCanvas'});
         notas.Offcanvas.addEventListener('hidden.bs.offcanvas',()=>{this.pantallaActual='modalAbierto'});
         tutorial.modalTutorial.addEventListener('hidden.bs.modal',()=>{this.pantallaActual=''});
-        modalContactos.addEventListener('hidden.bs.modal',()=>{manejador.pantallaActual=''});
-
+        configuraciones.escucharModales();
         document.addEventListener("backbutton",()=>{
             this.atras()
         });
@@ -510,11 +509,11 @@ class Manejador{
             case 'tutorial':
                 break;
             case 'configuraciones':
-                instModalConfiguraciones.hide();
+                configuraciones.instModalConfiguraciones.hide();
                 this.pantallaActual='';
                 break;
             case 'contactos':
-                instModalContactos.hide();
+                configuraciones.instModalContactos.hide();
                 this.pantallaActual='';
                 break;
             default:
@@ -567,11 +566,20 @@ class Manejador{
     }
 }
 
-const modalContactos=document.getElementById('modalContactos');
-const instModalConfiguraciones = new bootstrap.Modal('#modalConfiguraciones');
-const instModalContactos= new bootstrap.Modal(modalContactos);
+class Configuraciones{
+    constructor(){
+        this.modalConfiguraciones=document.getElementById('modalConfiguraciones');
+        this.modalContactos=document.getElementById('modalContactos');
+        this.instModalConfiguraciones = new bootstrap.Modal(this.modalConfiguraciones);
+        this.instModalContactos= new bootstrap.Modal(this.modalContactos);
+    }
+    escucharModales(){
+        this.modalContactos.addEventListener('hidden.bs.modal',()=>{manejador.pantallaActual=''});
+    }
+}
 
 const notas=new Notas();
 notas.mostrarNotas(notas.notas);
 const tutorial=new Tutorial();
+const configuraciones=new Configuraciones();
 const manejador=new Manejador();
