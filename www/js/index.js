@@ -36,7 +36,7 @@ class Notas{
                                     <i class="fa-solid fa-play fa-sm ms-4"></i>
                                 `:''}
                             </div>
-                            <div class="contenedorVoces me-3 mt-1">
+                            <div class="me-3 mt-1">
                                 ${nota.imagen && nota.imagen.length >= 1 ? `
                                     <span class="position-absolute top-0 star-0 ms-5 translate-middle badge rounded-pill bg-success">
                                         ${nota.imagen.length}
@@ -74,7 +74,7 @@ class Notas{
         var ubicacion;
         document.getElementById('ubicacion').dataset.ubicacion ? ubicacion=document.getElementById('ubicacion').dataset.ubicacion : ubicacion="";
         const contenedorAudios=document.getElementById('audios');
-        const audios=contenedorAudios.getElementsByTagName('i');
+        const audios=contenedorAudios.querySelectorAll('.audio');
         const audio=[];
         for(let i = 0; i < audios.length; i++){
             audio.push(audios[i].dataset.audio);
