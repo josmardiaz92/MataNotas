@@ -1,7 +1,9 @@
+
+ 
 # MataNotas
 Aplicación de notas simple y fácil de usar, desarrollada con Cordova para fines educativos. Permite crear, editar, borrar y guardar notas, así como agregar imágenes y ubicaciones geográficas. Un proyecto ideal para aprender los fundamentos del desarrollo móvil.
 
-###### Dentro de la carpeta Notas se puede encontrar documentacion mas explicita sobre el proyecto
+###### Dentro de la carpeta Notas se puede encontrar documentación más explicita sobre el proyecto
 
 #### Luego de clonar el repositorio debe instalar:
 ~~~    
@@ -16,11 +18,15 @@ cordova plugin add cordova-plugin-media@7.0.0
 ~~~
 
 # Comandos  
-- compilar:
+- Compilar:
     ~~~
     cordova build android
     ~~~
-- Probar en android:
+- Compilar para Google:
+    ~~~
+    cordova build android  -release
+    ~~~
+- Probar en Android:
     ~~~
     cordova run android
     ~~~
@@ -110,15 +116,15 @@ cordova build android
 Foros de Cordova: Busca en foros como Stack Overflow para resolver dudas.  
 
 
-### 7. hacemos un bosquejo general de la aplicacion  
+### 7. Hacemos un bosquejo general de la aplicación:  
 - Borramos todos los comentarios que nos deja Apache Cordova.  
 - Quitamos todo lo que encontramos en **index.js**.
-- Quitamos todo lo que esta en **index.css**.
-- Quitamos todo lo que esta dentro de la etiqueta **<body>** en **index.html**.
-- agregamos `bootstrap` y `fontAweson` al proyecto.
-- Dentro del **<body>** en **index.html** creamos un contenedor donde dibujaremos lo que serian nuestras notas, ademas del boton desde el cual posteriormente estaremos agregando las notas.  
+- Quitamos todo lo que está en **index.css**.
+- Quitamos todo lo que está dentro de la etiqueta **<body>** en **index.html**.
+- Agregamos `bootstrap` y `fontAweson` al proyecto.
+- Dentro del **<body>** en **index.html** creamos un contenedor donde dibujaremos lo que serían nuestras notas, además del botón desde el cual posteriormente estaremos agregando las notas.  
 #### Nota
-> Cuando se este llamando al `bootstrap`, al `fontAweson` y a nuestras propias librerias, hay que tener en cuenta el orden en que se llaman, porque lo ultimo que se llame, va a ser lo qe tendra mas relevancia sobre los demas (*sobretodo en los estilos*)  
+> Cuando se esté llamando al `bootstrap`, al `fontAweson` y a nuestras propias librerías, hay que tener en cuenta el orden en que se llaman, porque lo último que se llame, va a ser lo que tendrá más relevancia sobre los demás (*sobre todo en los estilos*)  
 ___  
 ## Clase 2  
 #### Objetivos:
@@ -155,7 +161,7 @@ Se modificó el código existente para utilizar la clase Nota, mejorando la orga
 ### 6. Próximos pasos:
 
 - Implementar los métodos de la clase Nota (eliminar, editar).
-- Auro seleccionar el titulo al empezar a agregar la nota.  
+- Auto seleccionar el título al empezar a agregar la nota.  
 
 ___
 
@@ -206,11 +212,11 @@ Manejo de arrays: Se utilizó el método splice() para eliminar elementos de un 
 
     - Se agrega un botón de cierre con su respectivo método para limpiar el campo de búsqueda y mostrar todas las notas.
 #### Detalles adicionales:
->**Eficiencia:** Se utiliza el método toLowerCase() para realizar comparaciones sin distinción entre mayúsculas y minúsculas, lo que mejora la eficiencia de la búsqueda.
-**Experiencia de usuario:** Se agrega un mensaje claro cuando no se encuentran resultados.
-**Flexibilidad:** El código es modular y puede adaptarse fácilmente a futuras modificaciones.  
+>**Eficiencia: ** Se utiliza el método toLowerCase() para realizar comparaciones sin distinción entre mayúsculas y minúsculas, lo que mejora la eficiencia de la búsqueda.
+**Experiencia de usuario: ** Se agrega un mensaje claro cuando no se encuentran resultados.
+**Flexibilidad: ** El código es modular y puede adaptarse fácilmente a futuras modificaciones.  
 
-### 5. Reestructuracion de las clases:
+### 5. Reestructuración de las clases:
 
 - Se agregaron propiedades para almacenar referencias a elementos del DOM como el contenedor de imágenes y el modal.
 - Se crearon métodos para manejar la toma de fotos, agregar imágenes a las notas, eliminar imágenes y mostrar las imágenes en las notas y en el modal.
@@ -228,8 +234,8 @@ Se muestra un mensaje de error si se produce algún error al tomar la foto.
 - Se ha mejorado la experiencia de usuario al permitir editar las imágenes directamente en el modal.
 #### Principales mejoras:
 
-> **Mayor funcionalidad:** La aplicación ahora permite agregar imágenes a las notas, enriqueciendo su contenido.
-**Mejor interfaz de usuario:** El menú de opciones en el modal facilita la gestión de las notas y las imágenes.
+> **Mayor funcionalidad: ** La aplicación ahora permite agregar imágenes a las notas, enriqueciendo su contenido.
+**Mejor interfaz de usuario: ** El menú de opciones en el modal facilita la gestión de las notas y las imágenes.
 **Mayor flexibilidad:** La estructura del código se ha mejorado para permitir futuras ampliaciones.
 ___
 ## Clase 4
@@ -239,8 +245,8 @@ ___
 - Agregar funcionalidad de color aleatorio a las notas.
 - Implementar la integración con Google Maps para mostrar la ubicación de las notas.
     - Agregar un botón de ubicación en el modal para seleccionar la ubicación actual.
-- Implementacion del plugin de dialogos para confirmar o no la eliminacion de elementos. 
-- Mejorar la experiencia del usuario permitiendole usar el botón de retroceso del dispositivo.
+- Implementación del plugin de diálogos para confirmar o no la eliminación de elementos. 
+- Mejorar la experiencia del usuario permitiéndole usar el botón de retroceso del dispositivo.
 ### 1. Color aleatorio:
 
 - Se creó una función colorRandom() para generar colores aleatorios en formato HSL.
@@ -248,24 +254,24 @@ ___
 ### 2. Integración con Google Maps:
 
 - Se utilizó el plugin cordova-plugin-geolocation para obtener la ubicación del dispositivo.
-- Se agregó la opción para tomar la ubicacion y almacenarla en un boton.
-    - Dicho boton puede abrir la app de google maps con la ubicación que tiene almacenada, o si se deja precionado nos da la opción de eliminarlo.
+- Se agregó la opción para tomar la ubicacion y almacenarla en un botón.
+    - Dicho botón puede abrir la app de Google Maps con la ubicación que tiene almacenada, o si se deja presionado nos da la opción de eliminarlo.
 ### 3. Cuadros de Dialogos:
--Se implementó un nuevo método que permite consultar al usuario si desea o no eliminar ciertas cosas (imagenes, ubicacion, notas).
+-Se implementó un nuevo método que permite consultar al usuario si desea o no eliminar ciertas cosas (imágenes, ubicacion, notas).
 ### 4. Botón de retroceso:
 
 - Se implementó un mecanismo para manejar el botón de retroceso del dispositivo, permitiendo navegar entre las diferentes pantallas de la aplicación.
 #### Detalles adicionales:
 
->**Geolocalización:** La aplicación puede almacenar la ubicación geográfica de cada nota.
-**Interfaz de usuario mejorada:** El menú de opciones y el botón de retroceso hacen que la aplicación sea más fácil de usar.
+>**Geolocalización: ** La aplicación puede almacenar la ubicación geográfica de cada nota.
+**Interfaz de usuario mejorada: ** El menú de opciones y el botón de retroceso hacen que la aplicación sea más fácil de usar.
 ___
 
 ## Clase 5
 ### Objetivos:
 - Agregar funciones para la captura, almacenamiento y reproducción de audio.
-- Personalizacion de la app.
-- Agregar politicas de seguridad.
+- Personalización de la app.
+- Agregar políticas de seguridad.
 
 ### 1. Integración del Plugin de Audio
 En esta clase, nos enfocaremos en agregar la funcionalidad de grabación y reproducción de audio a nuestra aplicación. Para ello, utilizaremos el plugin cordova-plugin-media.
@@ -297,9 +303,9 @@ Para personalizar nuestra aplicación, realizaremos los siguientes cambios en el
     </platform>
 ~~~
 
->Las etiquetas `<icon>` se usa para el icono de la app y en este caso hacen referencia a las imagenes previamente almacenadas dentro de la carpeta raiz del proyecto y configuradas con las siguientes expecificaciones para adaptarse a diferentes dispositivos: ldpi    : 36x36 px, mdpi    : 48x48 px, hdpi    : 72x72 px, xhdpi   : 96x96 px, xxhdpi  : 144x144 px, xxxhdpi : 192x192 px.
-La etiqueta con el name `AndroidWindowSplashScreenAnimatedIcon` es para la imagen de la animacion de cuando se inicia la app y su valor es la imagen previamente almacenada en la carpeta raiz del proyecto.
-la etiqueta con el name `AndroidWindowSplashScreenBackground` es para el color de fondo de la animacion de cuando se inicia la app y su valor es un color RGB.
+>Las etiquetas `<icon>` se usa para el icono de la app y en este caso hacen referencia a las imágenes previamente almacenadas dentro de la carpeta raíz del proyecto y configuradas con las siguientes expecificaciones para adaptarse a diferentes dispositivos: ldpi    : 36x36 px, mdpi    : 48x48 px, hdpi    : 72x72 px, xhdpi   : 96x96 px, xxhdpi  : 144x144 px, xxxhdpi : 192x192 px.
+La etiqueta con el name `AndroidWindowSplashScreenAnimatedIcon` es para la imagen de la animación de cuando se inicia la app y su valor es la imagen previamente almacenada en la carpeta raíz del proyecto.
+la etiqueta con el name `AndroidWindowSplashScreenBackground` es para el color de fondo de la animación de cuando se inicia la app y su valor es un color RGB.
 
 ### 3. Política de Seguridad
 Agregar una etiqueta <meta> con el atributo http-equiv="Content-Security-Policy" para definir la política de seguridad de la aplicación.
@@ -331,3 +337,72 @@ donde:
           - `data:`: Permite cargar imágenes en formato de URL de datos.
           - `content:`: Este valor es menos común y puede estar relacionado con el contenido de las imágenes.
 ___  
+
+## Clase 6
+### Objetivos:
+- Firmar la aplicación.
+- Subir la aplicación a Google Play.
+- Compilar proyecto de React.
+
+### 1. Firmar la aplicación
+1. Crear el keystore:
+    - En el CMD, nos dirigimos a la carpeta raíz de nuestro proyecto e ingresamos:
+~~~
+keytool -genkey -v -keystore NOMBREAPP.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias ALIASAPP
+~~~
+>Donde `NOMBREAPP` y `ALIASAPP` lo puedes adaptar a tu gusto.
+una vez ingresado el comando, el sistema te va a pedir unos datos, anótalos y guárdalos en un lugar seguro porque los podrias necesitar.
+NOTA: al ingresar la clave, no se muestra lo que se digita, pero si esta agarrando la clave y al finalizar, para confirmar, hay que ingresar "y" (de yes).
+2. Compilar la app para obtener el .AAB (formato admitido por Google Play):
+~~~
+cordova build android –release
+~~~
+>al finalizar la compilación, nos dará la ruta donde quedara almacenada la app, guarda esa ruta.
+3. Firmamos la app:
+~~~
+jarsigner -keystore NOMBREAPP.keystore -storepass CLAVE -keypass CLAVE RUTA_A_LA_APP ALIASAPP
+~~~
+>`NOMBREAPP` y `ALIASAPP` son los mismos que ingresamos en el comando anterior al crear el keystore.
+`CLAVE` es la que creamos cuando se hizo el keystore y se repite 2 veces.
+`RUTA_A_LA_APP` la ruta que nos arrojo al compilar.
+
+4. Verificar firma:
+~~~
+jarsigner -verify -verbose -certs RUTA_A_LA_APP
+~~~
+>`RUTA_A_LA_APP` la ruta que nos arrojo al compilar.
+
+### 2. Subir la app a Google Play
+1. crear cuenta de desarrollador en [Google Play Console](https://play.google.com/console/u/0/signup).
+    - necesitaras:
+        - 1 correo electrónico para la cuenta.
+        - 1 correo electrónico para comunicación.
+        - 1 número de teléfono para comunicación.
+        - pago único de 25$.
+2. Crear una nueva app:
+    - Hay que tener listo:
+        - Descripción de la app.
+        - Un link con las [políticas de privacidad](https://app.privacypolicies.com/ ).
+        - Icono de la app.
+        - Captures de como se ve la app en diferentes dispositivos (por lo menos 1).
+        - 1 imagen de 1024x500px donde se muestren las principales funcionabilidades de la app.
+        - Público objetivo.
+        - 20 personas que deseen ser nuestros verificadores.
+    - Hay que llenar toda la información que nos piden.
+
+Creada la app, podemos trabajar diferentes tipos de pruebas:
+1. Interna: la más básica, donde participa un grupo de verificadores y no tiene mayor incidencia en tu cuenta.
+2. Cerrada (Alpha): solo participa un grupo de verificadores y es el inicio para poder entrar en producción. **Nota: la 1ra vez que subes una app, debes pasar mínimo 14 días de pruebas cerradas con por lo menos 20 verificadores para poder acceder a producción**.
+3. Abierta (beta): prueba opcional, cualquiera podría inscribirse y participar.
+
+Cada prueba, de ser satisfactoria, te da la opción de acceder esa versión al siguiente escalafón, siendo producción el ultimo (ya la aplicación en la tienda, disponible para todos).
+### 3. Compilar proyecto de React.
+
+1. tener un proyecto en react.
+2. crear un proyecto de cordova.
+3. fusionar los proyectos.
+4. crear un hook.
+5. compilar.
+>Para más información, puede consultar el siguiente [tutorial](https://medium.com/@pshubham/using-react-with-cordova-f235de698cc3) o revisar la carpeta de Notas.
+___
+          
