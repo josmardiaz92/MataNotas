@@ -2,6 +2,7 @@
  
 # MataNotas
 Aplicación de notas simple y fácil de usar, desarrollada con Cordova para fines educativos. Permite crear, editar, borrar y guardar notas, así como agregar imágenes y ubicaciones geográficas. Un proyecto ideal para aprender los fundamentos del desarrollo móvil.
+Disponible en [Google Play](https://play.google.com/store/apps/details?id=io.cordova.matanotas).
 
 ###### Dentro de la carpeta Notas se puede encontrar documentación más explicita sobre el proyecto
 
