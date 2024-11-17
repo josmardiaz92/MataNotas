@@ -28,7 +28,7 @@ class Notas{
                                     </div>
                                 `:''}
                             </div>
-                            <div class="contenedorVoces me-3 mt-1">
+                            <div class="contenedorVoces me-3 mt-1 position-relative">
                                 ${nota.audio && nota.audio.length >= 1 ? `
                                     <span class="position-absolute top-0 star-0 ms-5 translate-middle badge rounded-pill bg-success">
                                         ${nota.audio.length}
@@ -36,7 +36,7 @@ class Notas{
                                     <i class="fa-solid fa-play fa-sm ms-4"></i>
                                 `:''}
                             </div>
-                            <div class="me-3 mt-1">
+                            <div class="me-3 mt-1 position-relative">
                                 ${nota.imagen && nota.imagen.length >= 1 ? `
                                     <span class="position-absolute top-0 star-0 ms-5 translate-middle badge rounded-pill bg-success">
                                         ${nota.imagen.length}
@@ -404,6 +404,7 @@ class Manejador{
             this.iniciarEventos();
         });
         this.mediaRec=null;
+        this.animacion=this.animar();
     }
     iniciarEventos(){
         if(!tutorial.confirmar()){
@@ -563,6 +564,25 @@ class Manejador{
         const minutos = fechaActual.getMinutes().toString().padStart(2, '0');
         const segundos = fechaActual.getSeconds().toString().padStart(2, '0');
         return {dia,mes,anio,horas,minutos,segundos}
+    }
+    animar(){
+        const altoVentana = window.innerHeight;
+        const contenedorAnimacion=document.getElementById('contenedorAnimacion');
+        contenedorAnimacion.style.height=`${altoVentana}px`;
+        const imgNombre=document.getElementById('imgNombre');
+        const imgLogo=document.getElementById('imgLogo')
+
+        setTimeout(() => {
+            imgLogo.classList.add('img-movida');
+            imgNombre.parentNode.classList.remove('d-none')
+            imgNombre.classList.add('img-animada');
+            setTimeout(() => {
+                    const app=document.getElementById('contenedorApp');
+                    contenedorAnimacion.classList.add('d-none');
+                    app.classList.remove('d-none');
+                    app.classList.add('aparecer');
+            }, 2000);
+        }, 300);
     }
 }
 

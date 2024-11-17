@@ -150,3 +150,46 @@ li button,a,p{
     font-weight: bold;
     all: unset;
 }
+
+/* ----------------- ANIMACION ------------------- */
+
+.img-animada {
+    animation: aparecer 1s ease forwards;
+}
+
+.img-movida {
+    animation: mover 1s ease forwards;
+}
+
+.aparecer{
+    animation: mostrar .5s ease forwards;
+}
+
+@keyframes mover {
+    0% {
+        transform: translateX(0); /* Comienza en su posición original */
+    }
+    100% {
+        transform: translateX(-50%); /* Termina ligeramente a la izquierda */
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateX(-10%); /* Comienza ligeramente a la izquierda */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(50%); /* Termina en su posición original */
+    }
+}
+
+@keyframes mostrar {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
