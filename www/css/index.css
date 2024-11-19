@@ -151,6 +151,10 @@ li button,a,p{
     all: unset;
 }
 
+.fw-light span{
+    font-size: x-small;
+}
+
 /* ----------------- ANIMACION ------------------- */
 
 .img-animada {
