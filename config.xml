@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.matanotas" version="2.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.cordova.matanotas" version="2.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>NotasJD</name>
     <description>Aplicación de notas simple y fácil de usar, desarrollada con Cordova para fines educativos</description>
     <author email="josmardiaz92@gmail.com" href="https://github.com/josmardiaz92/MataNotas">
